@@ -1,61 +1,163 @@
-<html>
-<body bgcolor="#fd5c63">
-  <style>
-    body {
-      background: linear-gradient(to bottom, #d66d75 , #e29587);
-  background-size: cover;
-  
-    }
-  </style>
-<center><h1><font color="white" style="font-family: futura;">Facilities...</font></h1></center>
-<hr size=6 color="black"><br>
-<center><h2><p style="font-family: Montserrat; color: white;">Computer Lab</p></h3>
-    <img src="Images/i2.jpg" height=400 width=500 style="border: 10px solid white; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities - Army Public School Cannanore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        .box {
-          border: 1px solid #ddd;
-          padding: 10px;
-          width: 800px;
-          margin: 20px auto;
-          text-align: center;
-          border-radius: 10px;
+        body {
+            background: linear-gradient(to bottom, #d66d75, #e29587);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
         }
-      </style>
-      
-      <div class="box" style="background: linear-gradient(to bottom, #EDF1F4 , #C3CBDC);,background-color: #f2f2f2;">
-        <p style="font-family: Montserrat;">The Computer Lab at Army Public School Cannanore is a dedicated space for computer-related activities and education. It includes computers with peripherals, high-speed internet access, a variety of educational software. The lab has a robust networking infrastructure, security features, and individual workstations for students. Provisions for technical support are available.</p>
-      </div>
-<h2><p style="font-family: Montserrat; color: white;">ATL Lab</p></h3>
-    <img src="Images/i5.jpg" height=400 width=500 style="border: 10px solid white; border-radius: 10px;">
-    <style>
-        .box {
-          border: 1px solid #ddd;
-          padding: 10px;
-          width: 800px;
-          margin: 20px auto;
-          text-align: center;
-          border-radius: 10px;
-        }
-      </style>
-      
-      <div class="box"style=" background: linear-gradient(to bottom, #EDF1F4 , #C3CBDC);,background-color: #f2f2f2;">
-        <p style="font-family: Montserrat;">The ATL Lab at Army Public School Cannanore is an innovative space dedicated to hands-on learning and fostering creativity among students. It's an Atal Tinkering Lab, empowering young minds to address societal problems through practical projects. Equipped with cutting-edge tools like electronics components and a 3D printer. it encourages active participation, problem-solving, and an entrepreneurial mindset. This lab aligns with India's Atal Innovation Mission, promoting innovation and practical skills while supplementing the regular curriculum. Overall, it's a platform for exploration, innovation, and creative problem-solving, shaping a brighter future for students.</p>
-      </div>
-<h2><p style="font-family: Montserrat; color: white;">Science Laboratories</p></h3>
-    <img src="Images/i6.jpg" height=400 width=500 style="border: 10px solid white; border-radius: 10px;">
-    <style>
-        .box {
-          border: 1px solid #ddd;
-          padding: 10px;
-          width: 800px;
-          margin: 20px auto;
-          text-align: center;
-          border-radius: 10px;
-        }
-      </style>
-      
-      <div class="box" style="background: linear-gradient(to bottom, #EDF1F4 , #C3CBDC);,background-color: #f2f2f2;">
-        <p style="font-family: Montserrat;">The science laboratories at Army Public School Cannanore are designed to offer practical experiences in physics, chemistry, and biology. These well-equipped labs enable students to conduct experiments related to magnetism, chemical reactions, and biological studies. Emphasizing safety and proper techniques, the labs foster a hands-on approach, reinforcing theoretical knowledge and promoting a deep understanding of scientific principles. Overall, they play a crucial role in providing a comprehensive and practical education in the sciences, encouraging exploration and experimentation.</p>
-      </div>
-<a href="index.html" target="_blank" style="font-family: Montserrat, sans-serif; font-size: 30px;"><h3><center>Home</center></h3></a>
 
+        h1 {
+            text-align: center;
+            font-family: futura;
+            margin-top: 20px;
+            color: black; /* Set h1 text color to black */
+        }
+
+        hr {
+            border: none;
+            height: 6px;
+            background-color: black;
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 10px;
+            overflow: hidden; /* Hide overflow of slides only */
+        }
+
+        .mySlides {
+            display: none;
+            text-align: center;
+        }
+
+        .mySlides img {
+            border: 10px solid white;
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            color: black; /* Set box text color to black */
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #fd5c63;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #e29587;
+        }
+
+        .back-to-home {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #fd5c63;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Facilities...</h1>
+    </center>
+    <hr>
+
+    <div class="slideshow-container">
+        <!-- Slides -->
+        <div class="mySlides">
+            <h2 style="color: black;">Computer Lab</h2>
+            <img src="Images/i2.jpg" alt="Computer Lab">
+            <div class="box">
+                <p>The Computer Lab at Army Public School Cannanore is a dedicated space for computer-related activities and education. It includes computers with peripherals, high-speed internet access, a variety of educational software. The lab has a robust networking infrastructure, security features, and individual workstations for students. Provisions for technical support are available.</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <h2 style="color: black;">ATL Lab</h2>
+            <img src="Images/i5.jpg" alt="ATL Lab">
+            <div class="box">
+                <p>The ATL Lab at Army Public School Cannanore is an innovative space dedicated to hands-on learning and fostering creativity among students. It's an Atal Tinkering Lab, empowering young minds to address societal problems through practical projects. Equipped with cutting-edge tools like electronics components and a 3D printer, it encourages active participation, problem-solving, and an entrepreneurial mindset. This lab aligns with India's Atal Innovation Mission, promoting innovation and practical skills while supplementing the regular curriculum.</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <h2 style="color: black;">Science Laboratories</h2>
+            <img src="Images/i6.jpg" alt="Science Laboratories">
+            <div class="box">
+                <p>The science laboratories at Army Public School Cannanore are designed to offer practical experiences in physics, chemistry, and biology. These well-equipped labs enable students to conduct experiments related to magnetism, chemical reactions, and biological studies. Emphasizing safety and proper techniques, the labs foster a hands-on approach, reinforcing theoretical knowledge and promoting a deep understanding of scientific principles.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="prev" onclick="plusSlides(-1)">&#10094; Previous</button>
+        <button class="next" onclick="plusSlides(1)">Next &#10095;</button>
+    </div>
+
+    <div class="back-to-home">
+        <a href="index.html" target="_blank">Home</a>
+    </div>
+
+    <script>
+        let slideIndex = 1; // Start at the first slide
+        showSlides(slideIndex); // Show the first slide
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("mySlides");
+            // Loop back if index is beyond bounds
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            // Show the current slide
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        function plusSlides(n) {
+            slideIndex += n; // Change slide index
+            showSlides(slideIndex); // Show updated slide
+        }
+    </script>
+</body>
+</html>
