@@ -30,6 +30,7 @@
             position: relative;
             max-width: 800px; /* Increased width for larger images */
             margin-left: 20px; /* Space between logo and slideshow */
+            margin-bottom: 20px; /* Add margin to position calendar below */
         }
 
         /* Slides (hidden by default) */
@@ -113,6 +114,36 @@
         center {
             text-align: center;
         }
+
+        /* Calendar styling */
+        .calendar {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .calendar table {
+            border-collapse: collapse;
+            font-size: 18px;
+            background-color: transparent; /* Remove the background color */
+        }
+
+        .calendar th {
+            background-color: #e29587; /* Retain background color for headers */
+            color: white; /* Header text color */
+        }
+
+        .calendar td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            color: black; /* Set text color to black for calendar cells */
+        }
+
+        .highlight {
+            background-color: #ffeb3b; /* Highlight color for the current day */
+        }
     </style>
 </head>
 
@@ -186,6 +217,65 @@
         </table>
     </center>
 
+    <div class="calendar">
+        <table>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td class="highlight">24</td> <!-- Highlight the current day -->
+                <td>25</td>
+                <td>26</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
     <script>
         let slideIndex = 0;
         showSlides();
@@ -200,21 +290,11 @@
                 slideIndex = 1;
             }
             slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 3000); // Change slide every 3 seconds
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
 
         function plusSlides(n) {
-            let slides = document.getElementsByClassName("mySlides");
-            slideIndex += n;
-            if (slideIndex > slides.length) {
-                slideIndex = 1;
-            } else if (slideIndex < 1) {
-                slideIndex = slides.length;
-            }
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
+            showSlides(slideIndex += n);
         }
     </script>
 </body>
