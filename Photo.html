@@ -32,10 +32,12 @@
 
         .gallery img {
             width: 100%;
-            height: auto;
+            height: 200px; /* Fixed height */
+            object-fit: cover; /* Crop and maintain aspect ratio */
             border-radius: 10px;
             border: 5px solid white;
             transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer; /* Indicate that images are clickable */
         }
 
         .gallery img:hover {
@@ -63,6 +65,66 @@
             transform: scale(1.05);
         }
 
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; 
+            background-color: rgba(0, 0, 0, 0.8); 
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 80%; /* Adjust the max width of the modal content */
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            width: auto; /* Set width to auto */
+            height: 400px; /* Fixed height for modal images */
+            object-fit: cover; /* Crop and maintain aspect ratio */
+            border-radius: 10px;
+            display: block; /* Make sure the image is displayed as a block */
+            margin: 0 auto; /* Center the image */
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fd5c63;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #e29587;
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -78,73 +140,176 @@
 
     <div class="gallery">
         <!-- Images -->
-        <img src="Images/G1.jpg" alt="Image 1">
-        <img src="Images/g2.jpg" alt="Image 2">
-        <img src="Images/g3.jpg" alt="Image 3">
-        <img src="Images/g4.jpg" alt="Image 4">
-        <img src="Images/g5.jpg" alt="Image 5">
-        <img src="Images/g6.jpg" alt="Image 6">
-        <img src="Images/g7.jpg" alt="Image 7">
-        <img src="Images/g8.jpg" alt="Image 8">
-        <img src="Images/g9.jpg" alt="Image 9">
-        <img src="Images/g10.jpg" alt="Image 10">
-        <img src="Images/g11.jpg" alt="Image 11">
-        <img src="Images/g12.jpg" alt="Image 12">
-        <img src="Images/g13.jpg" alt="Image 13">
-        <img src="Images/g14.jpg" alt="Image 14">
-        <img src="Images/g15.jpg" alt="Image 15">
-        <img src="Images/g16.jpg" alt="Image 16">
-        <img src="Images/g17.jpg" alt="Image 17">
-        <img src="Images/g18.jpg" alt="Image 18">
-        <img src="Images/g19.jpg" alt="Image 19">
-        <img src="Images/g20.jpg" alt="Image 20">
-        <img src="Images/g21.jpg" alt="Image 21">
-        <img src="Images/g22.jpg" alt="Image 22">
-        <img src="Images/g23.jpg" alt="Image 23">
-        <img src="Images/g24.jpg" alt="Image 24">
-        <img src="Images/g25.jpg" alt="Image 25">
-        <img src="Images/g26.jpg" alt="Image 26">
-        <img src="Images/g27.jpg" alt="Image 27">
-        <img src="Images/g28.jpg" alt="Image 28">
-        <img src="Images/g29.jpg" alt="Image 29">
-        <img src="Images/g30.jpg" alt="Image 30">
-        <img src="Images/g31.jpg" alt="Image 31">
-        <img src="Images/g32.jpg" alt="Image 32">
-        <img src="Images/g33.jpg" alt="Image 33">
-        <img src="Images/g34.jpg" alt="Image 34">
-        <img src="Images/g35.jpg" alt="Image 35">
-        <img src="Images/g36.jpg" alt="Image 36">
-        <img src="Images/g37.jpg" alt="Image 37">
-        <img src="Images/g38.jpg" alt="Image 38">
-        <img src="Images/g39.jpg" alt="Image 39">
-        <img src="Images/g40.jpg" alt="Image 40">
-        <img src="Images/g41.jpg" alt="Image 41">
-        <img src="Images/g42.jpg" alt="Image 42">
-        <img src="Images/g43.jpg" alt="Image 43">
-        <img src="Images/g44.jpg" alt="Image 44">
-        <img src="Images/g45.jpg" alt="Image 45">
-        <img src="Images/g46.jpg" alt="Image 46">
-        <img src="Images/g47.jpeg" alt="Image 47">
-        <img src="Images/g48.jpeg" alt="Image 48">
-        <img src="Images/g49.jpeg" alt="Image 49">
-        <img src="Images/g50.jpeg" alt="Image 50">
-        <img src="Images/g51.jpeg" alt="Image 51">
-        <img src="Images/g52.jpeg" alt="Image 52">
-        <img src="Images/g53.jpeg" alt="Image 53">
-        <img src="Images/g54.jpeg" alt="Image 54">
-        <img src="Images/g55.jpeg" alt="Image 55">
-        <img src="Images/g56.jpeg" alt="Image 56">
-        <img src="Images/g57.jpeg" alt="Image 57">
-        <img src="Images/g58.jpeg" alt="Image 58">
-        <img src="Images/g59.jpeg" alt="Image 59">
-        <img src="Images/g60.jpeg" alt="Image 60">
-        <img src="Images/g61.jpeg" alt="Image 61">
+        <img src="Images/G1.jpg" alt="Image 1" onclick="openModal(this.src, 0)">
+        <img src="Images/g2.jpg" alt="Image 2" onclick="openModal(this.src, 1)">
+        <img src="Images/g3.jpg" alt="Image 3" onclick="openModal(this.src, 2)">
+        <img src="Images/g4.jpg" alt="Image 4" onclick="openModal(this.src, 3)">
+        <img src="Images/g5.jpg" alt="Image 5" onclick="openModal(this.src, 4)">
+        <img src="Images/g6.jpg" alt="Image 6" onclick="openModal(this.src, 5)">
+        <img src="Images/g7.jpg" alt="Image 7" onclick="openModal(this.src, 6)">
+        <img src="Images/g8.jpg" alt="Image 8" onclick="openModal(this.src, 7)">
+        <img src="Images/g9.jpg" alt="Image 9" onclick="openModal(this.src, 8)">
+        <img src="Images/g10.jpg" alt="Image 10" onclick="openModal(this.src, 9)">
+        <img src="Images/g11.jpg" alt="Image 11" onclick="openModal(this.src, 10)">
+        <img src="Images/g12.jpg" alt="Image 12" onclick="openModal(this.src, 11)">
+        <img src="Images/g13.jpg" alt="Image 13" onclick="openModal(this.src, 12)">
+        <img src="Images/g14.jpg" alt="Image 14" onclick="openModal(this.src, 13)">
+        <img src="Images/g15.jpg" alt="Image 15" onclick="openModal(this.src, 14)">
+        <img src="Images/g16.jpg" alt="Image 16" onclick="openModal(this.src, 15)">
+        <img src="Images/g17.jpg" alt="Image 17" onclick="openModal(this.src, 16)">
+        <img src="Images/g18.jpg" alt="Image 18" onclick="openModal(this.src, 17)">
+        <img src="Images/g19.jpg" alt="Image 19" onclick="openModal(this.src, 18)">
+        <img src="Images/g20.jpg" alt="Image 20" onclick="openModal(this.src, 19)">
+        <img src="Images/g21.jpg" alt="Image 21" onclick="openModal(this.src, 20)">
+        <img src="Images/g22.jpg" alt="Image 22" onclick="openModal(this.src, 21)">
+        <img src="Images/g23.jpg" alt="Image 23" onclick="openModal(this.src, 22)">
+        <img src="Images/g24.jpg" alt="Image 24" onclick="openModal(this.src, 23)">
+        <img src="Images/g25.jpg" alt="Image 25" onclick="openModal(this.src, 24)">
+        <img src="Images/g26.jpg" alt="Image 26" onclick="openModal(this.src, 25)">
+        <img src="Images/g27.jpg" alt="Image 27" onclick="openModal(this.src, 26)">
+        <img src="Images/g28.jpg" alt="Image 28" onclick="openModal(this.src, 27)">
+        <img src="Images/g29.jpg" alt="Image 29" onclick="openModal(this.src, 28)">
+        <img src="Images/g30.jpg" alt="Image 30" onclick="openModal(this.src, 29)">
+        <img src="Images/g31.jpg" alt="Image 31" onclick="openModal(this.src, 30)">
+        <img src="Images/g32.jpg" alt="Image 32" onclick="openModal(this.src, 31)">
+        <img src="Images/g33.jpg" alt="Image 33" onclick="openModal(this.src, 32)">
+        <img src="Images/g34.jpg" alt="Image 34" onclick="openModal(this.src, 33)">
+        <img src="Images/g35.jpg" alt="Image 35" onclick="openModal(this.src, 34)">
+        <img src="Images/g36.jpg" alt="Image 36" onclick="openModal(this.src, 35)">
+        <img src="Images/g37.jpg" alt="Image 37" onclick="openModal(this.src, 36)">
+        <img src="Images/g38.jpg" alt="Image 38" onclick="openModal(this.src, 37)">
+        <img src="Images/g39.jpg" alt="Image 39" onclick="openModal(this.src, 38)">
+        <img src="Images/g40.jpg" alt="Image 40" onclick="openModal(this.src, 39)">
+        <img src="Images/g41.jpg" alt="Image 41" onclick="openModal(this.src, 40)">
+        <img src="Images/g42.jpg" alt="Image 42" onclick="openModal(this.src, 41)">
+        <img src="Images/g43.jpg" alt="Image 43" onclick="openModal(this.src, 42)">
+        <img src="Images/g44.jpg" alt="Image 44" onclick="openModal(this.src, 43)">
+        <img src="Images/g45.jpg" alt="Image 45" onclick="openModal(this.src, 44)">
+        <img src="Images/g46.jpg" alt="Image 46" onclick="openModal(this.src, 45)">
+        <img src="Images/g47.jpeg" alt="Image 47" onclick="openModal(this.src, 46)">
+        <img src="Images/g48.jpeg" alt="Image 48" onclick="openModal(this.src, 47)">
+        <img src="Images/g49.jpeg" alt="Image 49" onclick="openModal(this.src, 48)">
+        <img src="Images/g50.jpeg" alt="Image 50" onclick="openModal(this.src, 49)">
+        <img src="Images/g51.jpeg" alt="Image 51" onclick="openModal(this.src, 50)">
+        <img src="Images/g52.jpeg" alt="Image 52" onclick="openModal(this.src, 51)">
+        <img src="Images/g53.jpeg" alt="Image 53" onclick="openModal(this.src, 52)">
+        <img src="Images/g54.jpeg" alt="Image 54" onclick="openModal(this.src, 53)">
+        <img src="Images/g55.jpeg" alt="Image 55" onclick="openModal(this.src, 54)">
+        <img src="Images/g56.jpeg" alt="Image 56" onclick="openModal(this.src, 55)">
+        <img src="Images/g57.jpeg" alt="Image 57" onclick="openModal(this.src, 56)">
+        <img src="Images/g58.jpeg" alt="Image 58" onclick="openModal(this.src, 57)">
+        <img src="Images/g59.jpeg" alt="Image 59" onclick="openModal(this.src, 58)">
+        <img src="Images/g60.jpeg" alt="Image 60" onclick="openModal(this.src, 59)">
+        <img src="Images/g61.jpeg" alt="Image 61" onclick="openModal(this.src, 60)">
     </div>
 
-    <a href="index.html">Home</a> <!-- Removed target="_self" -->
+    <a href="index.html">Home</a>
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Modal Image">
+            <div class="navigation">
+                <button class="nav-button" onclick="changeImage(-1)">Previous</button>
+                <button class="nav-button" onclick="changeImage(1)">Next</button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         &copy; 2024 Army Public School Cannanore. All rights reserved.
     </footer>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = [
+            "Images/G1.jpg",
+            "Images/g2.jpg",
+            "Images/g3.jpg",
+            "Images/g4.jpg",
+            "Images/g5.jpg",
+            "Images/g6.jpg",
+            "Images/g7.jpg",
+            "Images/g8.jpg",
+            "Images/g9.jpg",
+            "Images/g10.jpg",
+            "Images/g11.jpg",
+            "Images/g12.jpg",
+            "Images/g13.jpg",
+            "Images/g14.jpg",
+            "Images/g15.jpg",
+            "Images/g16.jpg",
+            "Images/g17.jpg",
+            "Images/g18.jpg",
+            "Images/g19.jpg",
+            "Images/g20.jpg",
+            "Images/g21.jpg",
+            "Images/g22.jpg",
+            "Images/g23.jpg",
+            "Images/g24.jpg",
+            "Images/g25.jpg",
+            "Images/g26.jpg",
+            "Images/g27.jpg",
+            "Images/g28.jpg",
+            "Images/g29.jpg",
+            "Images/g30.jpg",
+            "Images/g31.jpg",
+            "Images/g32.jpg",
+            "Images/g33.jpg",
+            "Images/g34.jpg",
+            "Images/g35.jpg",
+            "Images/g36.jpg",
+            "Images/g37.jpg",
+            "Images/g38.jpg",
+            "Images/g39.jpg",
+            "Images/g40.jpg",
+            "Images/g41.jpg",
+            "Images/g42.jpg",
+            "Images/g43.jpg",
+            "Images/g44.jpg",
+            "Images/g45.jpg",
+            "Images/g46.jpg",
+            "Images/g47.jpeg",
+            "Images/g48.jpeg",
+            "Images/g49.jpeg",
+            "Images/g50.jpeg",
+            "Images/g51.jpeg",
+            "Images/g52.jpeg",
+            "Images/g53.jpeg",
+            "Images/g54.jpeg",
+            "Images/g55.jpeg",
+            "Images/g56.jpeg",
+            "Images/g57.jpeg",
+            "Images/g58.jpeg",
+            "Images/g59.jpeg",
+            "Images/g60.jpeg",
+            "Images/g61.jpeg"
+        ];
+
+        function openModal(src, index) {
+            currentImageIndex = index; // Set the current image index
+            const modal = document.getElementById("myModal");
+            const modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex"; // Show modal
+            modalImage.src = src; // Set the image source
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none"; // Hide modal
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            // Wrap around if necessary
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1; // Go to last image
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0; // Go to first image
+            }
+            // Update the modal image source
+            document.getElementById("modalImage").src = images[currentImageIndex];
+        }
+    </script>
 </body>
 </html>
