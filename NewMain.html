@@ -27,6 +27,28 @@
             margin: 20px 0;
         }
 
+        /* Navigation styles */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            position: relative; /* For z-index */
+            z-index: 10; /* Ensure navbar appears above other elements */
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #fd5c63;
+        }
+
         .box {
             display: block;
             border: 1px solid #333;
@@ -69,7 +91,7 @@
             margin-bottom: 20px; /* Space between list items */
         }
 
-        a {
+        a.home-link {
             display: block;
             text-align: center;
             font-size: 30px;
@@ -83,7 +105,7 @@
             max-width: 200px; /* Optional: Set max width for the link */
         }
 
-        a:hover {
+        a.home-link:hover {
             background-color: #e29587;
             transform: scale(1.05);
         }
@@ -98,6 +120,16 @@
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="Infra.html">Infrastructure</a>
+        <a href="Clubs.html">School Clubs</a>
+        <a href="Admission.html">Admission</a>
+        <a href="Activities.html">Activities</a>
+        <a href="Photo.html">Photo Gallery</a>
+        <a href="Contact.html">Contact Us</a>
+    </div>
+
     <center>
         <h1>Army Public School Cannanore</h1>
     </center>
@@ -122,7 +154,9 @@
         <li class="box">Medical facility: The school has a medical room with medical staff to provide first aid and medical care to students in case of emergencies.</li>
     </ul>
 
-    <a href="index.html">Home</a> <!-- Removed target="_blank" -->
+    <div class="back-to-home">
+        <a class="home-link" href="index.html">Home</a>
+    </div>
 
     <footer>
         &copy; 2024 Army Public School Cannanore. All rights reserved.

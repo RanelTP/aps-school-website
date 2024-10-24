@@ -28,6 +28,26 @@
             width: 80%;
         }
 
+        /* Header styles */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #fd5c63;
+        }
+
         .slideshow-container {
             position: relative;
             max-width: 800px;
@@ -96,6 +116,17 @@
     </style>
 </head>
 <body>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="Infra.html">Infrastructure</a>
+        <a href="Clubs.html">School Clubs</a>
+        <a href="Admission.html">Admission</a>
+        <a href="Activities.html">Activities</a>
+        <a href="Photo.html">Photo Gallery</a>
+        <a href="Contact.html">Contact Us</a>
+    </div>
+
     <center>
         <h1>Facilities...</h1>
     </center>
@@ -134,7 +165,7 @@
     </div>
 
     <div class="back-to-home">
-        <a href="index.html">Home</a> <!-- Removed target="_blank" -->
+        <a href="index.html">Home</a>
     </div>
 
     <script>

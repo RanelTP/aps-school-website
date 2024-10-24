@@ -50,24 +50,6 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
-        a {
-            text-decoration: none;
-            color: white;
-            font-size: 30px;
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            background-color: #d66d75;
-            padding: 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        
-        a:hover {
-            background-color: #e29587;
-            transform: scale(1.05);
-        }
-
         ol {
             padding-left: 20px;
         }
@@ -83,9 +65,46 @@
             font-size: 14px;
             font-style: italic;
         }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: white; /* Set background to white */
+            padding: 10px 0; /* Reduced padding to make the bar less bulky */
+            font-size: 18px;  /* Slightly smaller font size */
+            width: 100%;  /* Full width to cover the entire screen */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            padding: 8px 15px; /* Adjust padding for smaller clickable areas */
+            margin: 0 10px;  /* Adjusted margin to space the links */
+            transition: color 0.3s;
+            background-color: transparent; /* Ensure background is transparent */
+        }
+
+        .navbar a:hover {
+            color: #fd5c63; /* Change color on hover */
+            background-color: transparent; /* Ensure no background on hover */
+        }
     </style>
 </head>
 <body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="Infra.html">Infrastructure</a>
+        <a href="Clubs.html">School Clubs</a>
+        <a href="Admission.html">Admission</a>
+        <a href="Activities.html">Activities</a>
+        <a href="Photo.html">Photo Gallery</a>
+        <a href="Contact.html">Contact Us</a>
+    </div>
+
     <header>
         <h1>Admission Guidelines...</h1>
     </header>

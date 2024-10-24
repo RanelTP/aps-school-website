@@ -40,6 +40,31 @@
             border-radius: 10px;
         }
 
+        /* Navigation Bar Styles */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: white; /* Set background to white */
+            padding: 10px 0; /* Reduced padding to make the bar less bulky */
+            font-size: 18px;  /* Slightly smaller font size */
+            width: 100%;  /* Full width to cover the entire screen */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            padding: 8px 15px; /* Adjust padding for smaller clickable areas */
+            margin: 0 10px;  /* Adjusted margin to space the links */
+            transition: color 0.3s;
+            background-color: transparent; /* Ensure background is transparent */
+        }
+
+        .navbar a:hover {
+            color: #fd5c63; /* Change color on hover */
+            background-color: transparent; /* Ensure no background on hover */
+        }
+
         .navigation {
             text-align: center;
             margin: 20px 0;
@@ -62,6 +87,17 @@
     </style>
 </head>
 <body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="Infra.html">Infrastructure</a>
+        <a href="Clubs.html">School Clubs</a>
+        <a href="Admission.html">Admission</a>
+        <a href="Activities.html">Activities</a>
+        <a href="Photo.html">Photo Gallery</a>
+        <a href="Contact.html">Contact Us</a>
+    </div>
 
     <header>
         <h1>Extra Curricular Activities</h1>
@@ -102,7 +138,9 @@
         <button class="nav-button" onclick="changeSlide(1)">Next &#10095;</button>
     </div>
 
-    <a href="index.html" target="_self" style="display: block; text-align: center; font-size: 30px; margin-top: 20px; color: white;">Home</a>
+    <footer>
+        &copy; 2024 Army Public School Cannanore. All rights reserved.
+    </footer>
 
     <script>
         let currentSlide = 0;
