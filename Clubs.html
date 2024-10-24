@@ -1,33 +1,172 @@
-<html>
-<body bgcolor="#fd5c63">
-     <style>
-    body {
-      background: linear-gradient(to bottom, #d66d75 , #e29587);
-  background-size: cover;
-  
-    }
-  </style>
-<center><h1><font color="white" style="font-family:   Futura;">Discover Our Clubs...</font></h3></center>
-<hr size=6 color="black"><br>
-<div style="background: linear-gradient(to bottom, #EDF1F4 , #C3CBDC); border: solid 1px black; padding: 10px; border-radius: 5px; background-color: #f2f2f2;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Our Clubs - Army Public School Cannanore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #d66d75, #e29587);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-<h2><p style="font-family: Montserrat; color: black;">Chess Club</p></h3>
-<img src="Images\chess.png" height=200 width=200>
-<p style="font-family: Montserrat;">The Chess Club at Army Public School Cannanore is a group of students with a shared interest in playing and improving their chess skills. It involves regular chess sessions, participation in tournaments, strategy discussions, training sessions, and the active promotion of chess culture within the school community. </P>
-<h2><p style="font-family: Montserrat; color: black;">Yoga Club</p></h3>
-<img src="Images\Yoga.png" hieght=200 width=200>
-<p style="font-family: Montserrat;">
-The Yoga Club at Army Public School Cannanore is a vibrant community of students who actively participate in practicing and enhancing their yoga skills. The club organizes regular yoga sessions, engages in in-depth discussions about yoga techniques and benefits, hosts events or workshops related to yoga, and fervently promotes a culture of wellness and mindfulness within the school community. </P>
-<h2><p style="font-family: Montserrat; color: black;">Karate Club</p></h3>
-<img src="Images\Karate.png" height=200 width=200>
-<p style="font-family: Montserrat;">The Karate Club at Army Public School Cannanore thrives as a dynamic community where students actively engage in the pursuit of martial arts excellence. This club is a hub for enthusiasts dedicated to learning and mastering the art of Karate. Regular training sessions are conducted, providing members with a platform to refine their Karate techniques, practice various forms, and develop essential self-defense skills.
+        h1 {
+            text-align: center;
+            font-family: Futura;
+            margin-top: 20px;
+            color: white; /* Set h1 text color to white */
+        }
 
-In addition to routine training, the Karate Club actively participates in tournaments, exhibitions, and demonstrations, showcasing the impressive skills honed by its members. The club's presence contributes to a vibrant and energetic atmosphere within the school, fostering a sense of discipline, camaraderie, and physical fitness among its participants.
- <p>
-<h2><p style="font-family: Montserrat; color: black;">Houses</p></h3>
-<img src="Images\Houses.jpg" height=200 width=200>
-<p style="font-family: Montserrat;">Army Public School Cannanore is organized into four Houses, each named after ancient South Indian dynasties and represented by distinct colors: <span style="color: maroon;">Chera</span>, <span style="color: darkgoldenrod;">Chola</span>, <span style="color: darkgreen;">Pandya</span>, and <span style="color: blue;">Pallava</span>. These Houses serve as close-knit communities fostering holistic student development. Led by dedicated faculty members,  Throughout the academic year, inter-house competitions in sports, academics, arts, and culture provide a platform for students to showcase talents, collaborate, and develop essential life skills, instilling a sense of healthy competition, identity, and camaraderie among students.
- </P>
- 
-<a href="index.html" target="_blank" style="font-family: Montserrat, sans-serif; font-size: 30px;"><h3><center>Home</center></h3></a>
+        hr {
+            border: none;
+            height: 6px;
+            background-color: black;
+            margin: 20px auto;
+            width: 80%;
+        }
 
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 10px;
+            overflow: hidden; /* Hide overflow of slides only */
+        }
+
+        .mySlides {
+            display: none;
+            text-align: center;
+        }
+
+        .mySlides img {
+            border-radius: 10px; /* Keep rounded corners */
+            max-width: 100%;
+            height: auto;
+        }
+
+        .box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            color: black; /* Set box text color to black */
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #fd5c63;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #e29587;
+        }
+
+        .back-to-home {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #fd5c63;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Discover Our Clubs...</h1>
+    </center>
+    <hr>
+
+    <div class="slideshow-container">
+        <!-- Slides -->
+        <div class="mySlides">
+            <h2 style="color: black;">Chess Club</h2>
+            <img src="Images/chess.png" alt="Chess Club" height="200" width="200">
+            <div class="box">
+                <p>The Chess Club at Army Public School Cannanore is a group of students with a shared interest in playing and improving their chess skills. It involves regular chess sessions, participation in tournaments, strategy discussions, training sessions, and the active promotion of chess culture within the school community.</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <h2 style="color: black;">Yoga Club</h2>
+            <img src="Images/Yoga.png" alt="Yoga Club" height="200" width="200">
+            <div class="box">
+                <p>The Yoga Club at Army Public School Cannanore is a vibrant community of students who actively participate in practicing and enhancing their yoga skills. The club organizes regular yoga sessions, engages in in-depth discussions about yoga techniques and benefits, hosts events or workshops related to yoga, and fervently promotes a culture of wellness and mindfulness within the school community.</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <h2 style="color: black;">Karate Club</h2>
+            <img src="Images/Karate.png" alt="Karate Club" height="200" width="200">
+            <div class="box">
+                <p>The Karate Club at Army Public School Cannanore thrives as a dynamic community where students actively engage in the pursuit of martial arts excellence. This club is a hub for enthusiasts dedicated to learning and mastering the art of Karate. Regular training sessions are conducted, providing members with a platform to refine their Karate techniques, practice various forms, and develop essential self-defense skills.</p>
+                <p>In addition to routine training, the Karate Club actively participates in tournaments, exhibitions, and demonstrations, showcasing the impressive skills honed by its members. The club's presence contributes to a vibrant and energetic atmosphere within the school, fostering a sense of discipline, camaraderie, and physical fitness among its participants.</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <h2 style="color: black;">Houses</h2>
+            <img src="Images/Houses.jpg" alt="Houses" height="200" width="200">
+            <div class="box">
+                <p>Army Public School Cannanore is organized into four Houses, each named after ancient South Indian dynasties and represented by distinct colors: <span style="color: maroon;">Chera</span>, <span style="color: darkgoldenrod;">Chola</span>, <span style="color: darkgreen;">Pandya</span>, and <span style="color: blue;">Pallava</span>. These Houses serve as close-knit communities fostering holistic student development.</p>
+                <p>Led by dedicated faculty members, inter-house competitions in sports, academics, arts, and culture provide a platform for students to showcase talents, collaborate, and develop essential life skills, instilling a sense of healthy competition, identity, and camaraderie among students.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button class="prev" onclick="plusSlides(-1)">&#10094; Previous</button>
+        <button class="next" onclick="plusSlides(1)">Next &#10095;</button>
+    </div>
+
+    <div class="back-to-home">
+        <a href="index.html" target="_blank">Home</a>
+    </div>
+
+    <script>
+        let slideIndex = 1; // Start at the first slide
+        showSlides(slideIndex); // Show the first slide
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("mySlides");
+            // Loop back if index is beyond bounds
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            // Show the current slide
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        function plusSlides(n) {
+            slideIndex += n; // Change slide index
+            showSlides(slideIndex); // Show updated slide
+        }
+    </script>
+</body>
+</html>
