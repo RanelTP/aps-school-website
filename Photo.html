@@ -24,21 +24,20 @@
         .navigation {
             text-align: center;
             margin: 20px 0;
+            background-color: white; /* White background */
+            padding: 10px; /* Padding for better spacing */
         }
 
-        .nav-button {
-            padding: 10px 20px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 5px;
-            background-color: #fd5c63;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .navigation a {
+            color: #333; /* Dark text color */
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 15px; /* Spacing between links */
+            transition: color 0.3s;
         }
 
-        .nav-button:hover {
-            background-color: #e29587;
+        .navigation a:hover {
+            color: #fd5c63; /* Add hover color */
         }
 
         .gallery {
@@ -52,12 +51,12 @@
 
         .gallery img {
             width: 100%;
-            height: 200px; /* Fixed height */
-            object-fit: cover; /* Crop and maintain aspect ratio */
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
             border: 5px solid white;
             transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer; /* Indicate that images are clickable */
+            cursor: pointer;
         }
 
         .gallery img:hover {
@@ -67,32 +66,32 @@
 
         /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; 
-            z-index: 1000; 
+            display: none;
+            position: fixed;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; 
-            background-color: rgba(0, 0, 0, 0.8); 
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
             position: relative;
-            max-width: 80%; /* Adjust the max width of the modal content */
+            max-width: 80%;
             max-height: 80%;
+            overflow: hidden; /* Ensures image is contained */
         }
 
         .modal-content img {
-            width: auto; /* Set width to auto */
-            height: 400px; /* Fixed height for modal images */
-            object-fit: cover; /* Crop and maintain aspect ratio */
+            width: 100%;
+            height: auto;
             border-radius: 10px;
-            display: block; /* Make sure the image is displayed as a block */
-            margin: 0 auto; /* Center the image */
+            cursor: zoom-in;
+            transition: transform 0.3s ease; /* Smooth zoom */
         }
 
         .close {
@@ -112,24 +111,25 @@
             color: white;
             font-style: italic;
         }
+
     </style>
 </head>
 <body>
 
     <div class="navigation">
-        <a href="index.html" class="nav-button">Home</a>
-        <a href="infra.html" class="nav-button">Infrastructure</a>
-        <a href="clubs.html" class="nav-button">School Clubs</a>
-        <a href="admission.html" class="nav-button">Admission</a>
-        <a href="activities.html" class="nav-button">Activities</a>
-        <a href="photo.html" class="nav-button">Photo Gallery</a>
-        <a href="contact.html" class="nav-button">Contact Us</a>
+        <a href="index.html">Home</a>
+        <a href="infra.html">Infrastructure</a>
+        <a href="clubs.html">School Clubs</a>
+        <a href="admission.html">Admission</a>
+        <a href="activities.html">Activities</a>
+        <a href="photo.html">Photo Gallery</a>
+        <a href="contact.html">Contact Us</a>
     </div>
 
     <h1>Gallery</h1>
 
     <div class="gallery">
-        <!-- Images -->
+        <!-- Images 1-46 (JPG) -->
         <img src="Images/G1.jpg" alt="Image 1" onclick="openModal(this.src)">
         <img src="Images/g2.jpg" alt="Image 2" onclick="openModal(this.src)">
         <img src="Images/g3.jpg" alt="Image 3" onclick="openModal(this.src)">
@@ -176,6 +176,8 @@
         <img src="Images/g44.jpg" alt="Image 44" onclick="openModal(this.src)">
         <img src="Images/g45.jpg" alt="Image 45" onclick="openModal(this.src)">
         <img src="Images/g46.jpg" alt="Image 46" onclick="openModal(this.src)">
+
+        <!-- Images 47-61 (JPEG) -->
         <img src="Images/g47.jpeg" alt="Image 47" onclick="openModal(this.src)">
         <img src="Images/g48.jpeg" alt="Image 48" onclick="openModal(this.src)">
         <img src="Images/g49.jpeg" alt="Image 49" onclick="openModal(this.src)">
@@ -193,35 +195,60 @@
         <img src="Images/g61.jpeg" alt="Image 61" onclick="openModal(this.src)">
     </div>
 
-    <!-- Modal -->
-    <div class="modal" id="myModal">
+    <!-- Modal for image viewing -->
+    <div id="myModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <img id="modalImage" src="" alt="Modal Image">
+            <img id="modal-image" src="">
         </div>
     </div>
 
     <footer>
-        &copy; 2024 Army Public School Cannanore. All rights reserved.
+        &copy; 2023 Army Public School Cannanore - Photo Gallery
     </footer>
 
     <script>
+        let zoomLevel = 1;
+
         function openModal(src) {
-            document.getElementById('modalImage').src = src;
-            document.getElementById('myModal').style.display = "flex"; // Show the modal
+            const modal = document.getElementById('myModal');
+            const modalImg = document.getElementById('modal-image');
+            modal.style.display = "flex";
+            modalImg.src = src;
+            zoomLevel = 1;
+            modalImg.style.transform = "scale(1)";
+            modalImg.style.cursor = "zoom-in"; // Initial cursor set to zoom-in
         }
 
         function closeModal() {
-            document.getElementById('myModal').style.display = "none"; // Hide the modal
+            document.getElementById('myModal').style.display = "none";
         }
 
-        // Close modal when clicking outside of the image
-        window.onclick = function(event) {
-            const modal = document.getElementById('myModal');
-            if (event.target === modal) {
-                closeModal();
+        const modalImg = document.getElementById('modal-image');
+
+        // Zoom in/out logic
+        modalImg.addEventListener('click', function () {
+            if (zoomLevel === 1) {
+                zoomLevel = 2;
+                this.style.transform = "scale(2)";
+                this.style.cursor = "zoom-out"; // Change cursor when zoomed in
+            } else {
+                zoomLevel = 1;
+                this.style.transform = "scale(1)";
+                this.style.cursor = "zoom-in"; // Reset cursor when zoomed out
             }
-        }
+        });
+
+        // Enable zooming with mouse scroll
+        modalImg.addEventListener('wheel', function (event) {
+            event.preventDefault(); // Prevent default scrolling behavior
+            if (event.deltaY < 0) {
+                zoomLevel = Math.min(zoomLevel + 0.1, 3); // Max zoom 3x
+            } else {
+                zoomLevel = Math.max(zoomLevel - 0.1, 1); // Min zoom 1x
+            }
+            this.style.transform = `scale(${zoomLevel})`;
+        });
     </script>
 </body>
 </html>
