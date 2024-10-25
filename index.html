@@ -218,7 +218,7 @@
     </center>
 
     <div class="calendar">
-        <table>
+        <table id="calendar-table">
             <tr>
                 <th>Sun</th>
                 <th>Mon</th>
@@ -260,7 +260,7 @@
                 <td>21</td>
                 <td>22</td>
                 <td>23</td>
-                <td class="highlight">24</td> <!-- Highlight the current day -->
+                <td>24</td>
                 <td>25</td>
                 <td>26</td>
             </tr>
@@ -290,11 +290,26 @@
                 slideIndex = 1;
             }
             slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
         }
 
         function plusSlides(n) {
             showSlides(slideIndex += n);
+        }
+
+        // Get the current date
+        const currentDate = new Date();
+        const day = currentDate.getDate(); // Get the day of the month
+        const month = currentDate.getMonth(); // Get the month (0-11)
+
+        // Check if the month is October (month 9 in JS)
+        if (month === 9) { 
+            const calendarCells = document.querySelectorAll("#calendar-table td");
+            calendarCells.forEach(cell => {
+                if (parseInt(cell.innerText) === day) {
+                    cell.classList.add("highlight"); // Add highlight class to the current day
+                }
+            });
         }
     </script>
 </body>
