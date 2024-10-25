@@ -7,10 +7,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to bottom, #d66d75, #e29587);
-            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        /* Video background styles */
+        .video-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Behind all other content */
+            transform: translate(-50%, -50%);
+            object-fit: cover; /* Cover the entire viewport */
         }
 
         h1 {
@@ -34,6 +49,8 @@
             justify-content: center;
             background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
             padding: 10px 0;
+            z-index: 1; /* Ensure navbar appears above video */
+            position: relative; /* Relative positioning for z-index */
         }
 
         .navbar a {
@@ -54,6 +71,7 @@
             margin: 40px auto;
             border-radius: 10px;
             overflow: hidden; /* Hide overflow of slides only */
+            z-index: 1; /* Above video background */
         }
 
         .mySlides {
@@ -74,8 +92,10 @@
             margin: 20px auto;
             text-align: center;
             border-radius: 10px;
-            background-color: #f2f2f2;
+            background-color: rgba(242, 242, 242, 0.8); /* Semi-transparent background */
             color: black; /* Set box text color to black */
+            z-index: 1; /* Above video background */
+            position: relative; /* For z-index */
         }
 
         .button-container {
@@ -116,6 +136,12 @@
     </style>
 </head>
 <body>
+
+    <!-- Video background -->
+    <video class="video-background" autoplay loop muted>
+        <source src="Images/Gradient.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <div class="navbar">
         <a href="index.html">Home</a>
@@ -190,6 +216,9 @@
             slideIndex += n; // Change slide index
             showSlides(slideIndex); // Show updated slide
         }
+
+        // Initial call to show the first slide
+        showSlides(slideIndex);
     </script>
 </body>
 </html>

@@ -7,10 +7,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to bottom, #d66d75, #e29587);
-            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        /* Video background styles */
+        .video-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Behind all other content */
+            transform: translate(-50%, -50%);
+            object-fit: cover; /* Cover the entire viewport */
         }
 
         h1 {
@@ -33,16 +48,18 @@
             display: flex;
             justify-content: center;
             background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px 0; /* Reduced padding to make the bar less bulky */
-            font-size: 18px;  /* Slightly smaller font size */
-            width: 100%;  /* Full width to cover the entire screen */
+            padding: 10px 0;
+            font-size: 18px;
+            width: 100%;
+            z-index: 1;
+            position: relative;
         }
 
         .navbar a {
             text-decoration: none;
             color: black;
-            padding: 8px 20px; /* Reduced padding for smaller clickable areas */
-            margin: 0 10px;  /* Adjusted margin to space the links */
+            padding: 8px 20px;
+            margin: 0 10px;
             transition: color 0.3s;
         }
 
@@ -55,7 +72,8 @@
             max-width: 800px;
             margin: 40px auto;
             border-radius: 10px;
-            overflow: hidden; /* Hide overflow of slides only */
+            overflow: hidden;
+            z-index: 1;
         }
 
         .mySlides {
@@ -64,7 +82,7 @@
         }
 
         .mySlides img {
-            border-radius: 10px; /* Keep rounded corners */
+            border-radius: 10px;
             max-width: 100%;
             height: auto;
         }
@@ -75,8 +93,10 @@
             margin: 20px auto;
             text-align: center;
             border-radius: 10px;
-            background-color: #f2f2f2;
-            color: black; /* Set box text color to black */
+            background-color: rgba(242, 242, 242, 0.8);
+            color: black;
+            z-index: 1;
+            position: relative;
         }
 
         .button-container {
@@ -117,6 +137,13 @@
     </style>
 </head>
 <body>
+
+    <!-- Video background -->
+    <video class="video-background" autoplay loop muted>
+        <source src="Images/Gradient.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <!-- Navigation Bar -->
     <div class="navbar">
         <a href="index.html">Home</a>
@@ -157,7 +184,6 @@
             <img src="Images/Karate.png" alt="Karate Club" height="200" width="200">
             <div class="box">
                 <p>The Karate Club at Army Public School Cannanore thrives as a dynamic community where students actively engage in the pursuit of martial arts excellence. This club is a hub for enthusiasts dedicated to learning and mastering the art of Karate. Regular training sessions are conducted, providing members with a platform to refine their Karate techniques, practice various forms, and develop essential self-defense skills.</p>
-                <p>In addition to routine training, the Karate Club actively participates in tournaments, exhibitions, and demonstrations, showcasing the impressive skills honed by its members. The club's presence contributes to a vibrant and energetic atmosphere within the school, fostering a sense of discipline, camaraderie, and physical fitness among its participants.</p>
             </div>
         </div>
 
@@ -166,7 +192,6 @@
             <img src="Images/Houses.jpg" alt="Houses" height="200" width="200">
             <div class="box">
                 <p>Army Public School Cannanore is organized into four Houses, each named after ancient South Indian dynasties and represented by distinct colors: <span style="color: maroon;">Chera</span>, <span style="color: darkgoldenrod;">Chola</span>, <span style="color: darkgreen;">Pandya</span>, and <span style="color: blue;">Pallava</span>. These Houses serve as close-knit communities fostering holistic student development.</p>
-                <p>Led by dedicated faculty members, inter-house competitions in sports, academics, arts, and culture provide a platform for students to showcase talents, collaborate, and develop essential life skills, instilling a sense of healthy competition, identity, and camaraderie among students.</p>
             </div>
         </div>
     </div>
@@ -177,7 +202,7 @@
     </div>
 
     <div class="back-to-home">
-        <a href="index.html">Home</a> <!-- Removed target="_blank" -->
+        <a href="index.html">Home</a>
     </div>
 
     <script>
@@ -201,6 +226,9 @@
             slideIndex += n; // Change slide index
             showSlides(slideIndex); // Show updated slide
         }
+
+        // Initial call to show the first slide
+        showSlides(slideIndex);
     </script>
 </body>
 </html>

@@ -6,11 +6,23 @@
     <title>Contact Us</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        /* Video background styling */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1; /* Place video behind other content */
+        }
+
         body {
             background: linear-gradient(to bottom, #d66d75, #e29587);
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             color: rgb(0, 0, 0);
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         h1 {
@@ -29,6 +41,8 @@
             max-width: 800px;
             margin: 20px auto;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1; /* Ensure it overlays the video */
+            position: relative;
         }
 
         ul {
@@ -61,20 +75,22 @@
         .inquiry-form {
             margin: 20px 0;
             padding: 20px;
-            background-color: #fff; /* White background for the form */
+            background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            max-width: 500px; /* Set a maximum width for the form */
-            margin-left: auto; /* Center the form */
-            margin-right: auto; /* Center the form */
-            display: flex; /* Use flexbox for alignment */
-            flex-direction: column; /* Stack elements vertically */
-            align-items: center; /* Center items horizontally */
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            position: relative;
         }
 
         .inquiry-form input, .inquiry-form textarea {
-            width: 90%; /* Set a width for the inputs */
-            max-width: 100%; /* Ensure inputs do not exceed max width */
+            width: 90%;
+            max-width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
@@ -90,7 +106,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            width: 90%; /* Set button width to match inputs */
+            width: 90%;
         }
 
         .inquiry-form button:hover {
@@ -101,53 +117,38 @@
         .navbar {
             display: flex;
             justify-content: center;
-            background-color: white; /* Set background to white */
-            padding: 10px 0; /* Reduced padding to make the bar less bulky */
-            font-size: 18px; /* Slightly smaller font size */
-            width: 100%; /* Full width to cover the entire screen */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+            background-color: white;
+            padding: 10px 0;
+            font-size: 18px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .navbar a {
             text-decoration: none;
             color: black;
-            padding: 8px 15px; /* Adjust padding for smaller clickable areas */
-            margin: 0 10px; /* Adjusted margin to space the links */
+            padding: 8px 15px;
+            margin: 0 10px;
             transition: color 0.3s;
-            background-color: transparent; /* Ensure background is transparent */
+            background-color: transparent;
         }
 
         .navbar a:hover {
-            color: #fd5c63; /* Change color on hover */
-            background-color: transparent; /* Ensure no background on hover */
+            color: #fd5c63;
+            background-color: transparent;
         }
 
-        a {
-            display: block;
-            text-align: center;
-            font-size: 30px;
-            color: white;
-            text-decoration: none;
-            margin: 30px auto;
-            padding: 15px 20px;
-            border-radius: 5px;
-            background-color: #fd5c63;
-            transition: background-color 0.3s, transform 0.3s;
-            max-width: 200px;
-        }
-
-        a:hover {
-            background-color: #e29587;
-            transform: scale(1.05);
-        }
-
-        /* Styles for the inquiries list */
+        /* Additional styles for inquiries list */
         .inquiries-list {
             margin-top: 20px;
             padding: 20px;
-            background-color: #fff; /* White background for the list */
+            background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            position: relative;
         }
 
         .inquiry-item {
@@ -157,6 +158,13 @@
     </style>
 </head>
 <body>
+
+    <!-- Video background -->
+    <video id="bg-video" autoplay muted loop>
+        <source src="Images/Gradient.mp4" type="video/mp4">
+        <!-- Add other video formats here if necessary -->
+        Your browser does not support the video tag.
+    </video>
 
     <!-- Navigation Bar -->
     <div class="navbar">
@@ -207,8 +215,6 @@
         <ul id="inquiryList"></ul>
     </div>
 
-    <a href="index.html">Home</a> <!-- Removed target="_self" -->
-
     <script>
         function submitInquiry() {
             var name = document.getElementById("name").value;
@@ -218,11 +224,10 @@
             if (name && email && message) {
                 var inquiryList = document.getElementById("inquiryList");
                 var listItem = document.createElement("li");
-                listItem.className = "inquiry-item"; // Add class for styling
+                listItem.className = "inquiry-item";
                 listItem.textContent = `${name} (${email}): ${message}`;
                 inquiryList.appendChild(listItem);
 
-                // Clear the input fields
                 document.getElementById("name").value = '';
                 document.getElementById("email").value = '';
                 document.getElementById("message").value = '';

@@ -6,37 +6,64 @@
     <title>Extra Curricular Activities</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        /* Basic styling */
         body {
-            background: linear-gradient(to bottom, #d66d75, #e29587);
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            color: black;
+            color: white; /* Set default text color to white for contrast over video */
+        }
+
+        /* Video background setup */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3; /* Slight transparency for readability */
+        }
+
+        /* Page content styling */
+        .content {
+            position: relative;
+            padding: 20px;
+            margin-top: 10px;
+            z-index: 1;
         }
 
         h1, h2 {
             text-align: center;
         }
 
+        /* Slideshow styling */
         .slide {
-            display: none; /* Hidden by default */
+            display: none;
             text-align: center;
             padding: 20px;
             border-radius: 10px;
             margin: 20px auto;
             max-width: 800px;
-            background: linear-gradient(to bottom, #EDF1F4, #C3CBDC);
-            border: solid 1px black;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background for readability */
+            border: solid 1px white;
         }
 
-        /* Change text color to black for slide content */
+        /* Slide content text color */
         .slide p, .slide ul {
-            color: black; /* Black text color */
-            text-align: left; /* Align text to the left */
+            color: white; /* White text color for readability */
+            text-align: left;
         }
 
         img {
-            width: 100%; /* Responsive image */
-            max-width: 500px; /* Limit max width */
+            width: 100%;
+            max-width: 500px;
             border-radius: 10px;
         }
 
@@ -44,25 +71,23 @@
         .navbar {
             display: flex;
             justify-content: center;
-            background-color: white; /* Set background to white */
-            padding: 10px 0; /* Reduced padding to make the bar less bulky */
-            font-size: 18px;  /* Slightly smaller font size */
-            width: 100%;  /* Full width to cover the entire screen */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+            background-color: transparent; /* Transparent navbar */
+            padding: 10px 0;
+            font-size: 18px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .navbar a {
             text-decoration: none;
-            color: black;
-            padding: 8px 15px; /* Adjust padding for smaller clickable areas */
-            margin: 0 10px;  /* Adjusted margin to space the links */
+            color: white;
+            padding: 8px 15px;
+            margin: 0 10px;
             transition: color 0.3s;
-            background-color: transparent; /* Ensure background is transparent */
         }
 
         .navbar a:hover {
-            color: #fd5c63; /* Change color on hover */
-            background-color: transparent; /* Ensure no background on hover */
+            color: #fd5c63;
         }
 
         .navigation {
@@ -88,6 +113,14 @@
 </head>
 <body>
 
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay loop muted>
+            <source src="Images/Gradient.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
     <!-- Navigation Bar -->
     <div class="navbar">
         <a href="index.html">Home</a>
@@ -100,60 +133,65 @@
         <a href="Contact.html">Contact Us</a>
     </div>
 
-    <header>
-        <h1>Extra Curricular Activities</h1>
-        <hr size="6" color="black">
-    </header>
+    <!-- Page Content -->
+    <div class="content">
+        <header>
+            <h1>Extra Curricular Activities</h1>
+            <hr size="6" color="white">
+        </header>
 
-    <main>
-        <section class="slide" id="slide1">
-            <h2>Extracurricular Benefits</h2>
-            <ul>
-                <li>Extracurricular activities offer kids a chance to explore new interests that are not part of the regular school curriculum.</li>
-                <li>They provide fun and enjoyment, helping to keep kids motivated about school.</li>
-                <li>Activities help children gain new skills, learn to socialize, and develop leadership abilities.</li>
-            </ul>
-        </section>
+        <!-- Slideshow -->
+        <main>
+            <section class="slide" id="slide1">
+                <h2>Extracurricular Benefits</h2>
+                <ul>
+                    <li>Extracurricular activities offer kids a chance to explore new interests that are not part of the regular school curriculum.</li>
+                    <li>They provide fun and enjoyment, helping to keep kids motivated about school.</li>
+                    <li>Activities help children gain new skills, learn to socialize, and develop leadership abilities.</li>
+                </ul>
+            </section>
 
-        <section class="slide" id="slide2">
-            <h2>Physical Activities</h2>
-            <img src="Images/Sports.png" alt="Sports">
-            <p>Army Public School Cannanore encompasses a diverse range of pursuits, including athletics, team sports, physical training, cycling, adventure sports, inter-house competitions, yoga, and meditation.</p>
-        </section>
+            <section class="slide" id="slide2">
+                <h2>Physical Activities</h2>
+                <img src="Images/Sports.png" alt="Sports">
+                <p>Army Public School Cannanore encompasses a diverse range of pursuits, including athletics, team sports, physical training, cycling, adventure sports, inter-house competitions, yoga, and meditation.</p>
+            </section>
 
-        <section class="slide" id="slide3">
-            <h2>Literary and Academic Activities</h2>
-            <img src="Images/Books1.png" alt="Books">
-            <p>These activities include the publication of a school magazine, quizzes, essay writing competitions, debates, and workshops on creative writing.</p>
-        </section>
+            <section class="slide" id="slide3">
+                <h2>Literary and Academic Activities</h2>
+                <img src="Images/Books1.png" alt="Books">
+                <p>These activities include the publication of a school magazine, quizzes, essay writing competitions, debates, and workshops on creative writing.</p>
+            </section>
 
-        <section class="slide" id="slide4">
-            <h2>Cultural Activities</h2>
-            <img src="Images/Cultural.png" alt="Cultural Activities">
-            <p>These activities provide a platform for artistic expression, including drawing, painting, music, dance, plays, and talent shows.</p>
-        </section>
-    </main>
+            <section class="slide" id="slide4">
+                <h2>Cultural Activities</h2>
+                <img src="Images/Cultural.png" alt="Cultural Activities">
+                <p>These activities provide a platform for artistic expression, including drawing, painting, music, dance, plays, and talent shows.</p>
+            </section>
+        </main>
 
-    <div class="navigation">
-        <button class="nav-button" onclick="changeSlide(-1)">&#10094; Previous</button>
-        <button class="nav-button" onclick="changeSlide(1)">Next &#10095;</button>
+        <!-- Slide Navigation -->
+        <div class="navigation">
+            <button class="nav-button" onclick="changeSlide(-1)">&#10094; Previous</button>
+            <button class="nav-button" onclick="changeSlide(1)">Next &#10095;</button>
+        </div>
+
+        <footer>
+            &copy; 2024 Army Public School Cannanore. All rights reserved.
+        </footer>
     </div>
-
-    <footer>
-        &copy; 2024 Army Public School Cannanore. All rights reserved.
-    </footer>
 
     <script>
         let currentSlide = 0;
         const slides = document.getElementsByClassName("slide");
 
         function showSlide(index) {
-            if (index >= slides.length) currentSlide = 0; // Wrap around
-            if (index < 0) currentSlide = slides.length - 1; // Wrap around
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
             for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none"; // Hide all slides
+                slides[i].style.display = "none";
             }
-            slides[currentSlide].style.display = "block"; // Show the current slide
+            slides[currentSlide].style.display = "block";
         }
 
         function changeSlide(n) {
