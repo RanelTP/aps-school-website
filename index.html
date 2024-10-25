@@ -36,12 +36,26 @@
             margin: 20px;
         }
 
-        /* Slideshow container */
+        /* Slideshow container with animated outline */
         .slideshow-container {
             position: relative;
             max-width: 800px; /* Increased width for larger images */
             margin-left: 20px; /* Space between logo and slideshow */
             margin-bottom: 20px; /* Add margin to position calendar below */
+            border: 4px solid white; /* White outline for slideshow */
+            border-radius: 10px; /* Rounded corners */
+            padding: 5px; /* Padding for inner spacing */
+            animation: outlinePulse 2s infinite; /* Outline pulse animation */
+        }
+
+        /* Outline pulse animation */
+        @keyframes outlinePulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
         }
 
         /* Slides (hidden by default) */
@@ -294,37 +308,45 @@
     </div>
 
     <script>
-        let slideIndex = 0;
-        showSlides();
+        let slideIndex = 0; // Initialize slide index
+        showSlides(); // Start showing slides
 
         function showSlides() {
             let slides = document.getElementsByClassName("mySlides");
             for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                slides[i].style.display = "none"; // Hide all slides
             }
-            slideIndex++;
+            slideIndex++; // Increment slide index
             if (slideIndex > slides.length) {
-                slideIndex = 1;
+                slideIndex = 1; // Reset to first slide if it exceeds
             }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 3000); // Change image every 3 seconds
+            slides[slideIndex - 1].style.display = "block"; // Show current slide
+            setTimeout(showSlides, 10000); // Change slide every 3 seconds
         }
 
         function plusSlides(n) {
-            showSlides(slideIndex += n);
+            showSlides(slideIndex += n); // Show next or previous slide
         }
 
-        // Get the current date
-        const currentDate = new Date();
-        const day = currentDate.getDate(); // Get the day of the month
-        const month = currentDate.getMonth(); // Get the month (0-11)
-
-        // Check if the month is October (month 9 in JS)
-        if (month === 9) { 
-            const calendarCells = document.querySelectorAll("#calendar-table td");
+        // Highlight current date
+        const currentDate = new Date(); // Get current date
+        const day = currentDate.getDate(); // Get current day
+        const month = currentDate.getMonth(); // Get current month
+        const year = currentDate.getFullYear(); // Get current year
+        
+        // Create a new Date object for the current month and year
+        const currentMonthDate = new Date(year, month, 1);
+        const totalDaysInMonth = new Date(year, month + 1, 0).getDate(); // Get the total days in the month
+        const calendarCells = document.querySelectorAll("#calendar-table td");
+        
+        // Clear previous highlights
+        calendarCells.forEach(cell => cell.classList.remove("highlight"));
+        
+        // Highlight today's date in the calendar
+        if (day <= totalDaysInMonth) {
             calendarCells.forEach(cell => {
                 if (parseInt(cell.innerText) === day) {
-                    cell.classList.add("highlight"); // Add highlight class to the current day
+                    cell.classList.add("highlight"); // Highlight today's date
                 }
             });
         }
