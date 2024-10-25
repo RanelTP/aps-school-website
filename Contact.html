@@ -58,6 +58,9 @@
 
         li img {
             margin-left: 10px;
+            border-radius: 50%; /* Make images circular */
+            width: 50px; /* Set default picture size */
+            height: 50px; /* Set default picture size */
         }
 
         .contact-info {
@@ -154,6 +157,48 @@
         .inquiry-item {
             border-bottom: 1px solid #ccc;
             padding: 10px 0;
+            display: flex; /* Flex layout for inquiry items */
+            align-items: flex-start; /* Align items to the start */
+        }
+
+        .inquiry-details {
+            margin-left: 10px; /* Add margin to separate image and text */
+        }
+
+        /* Tag styles */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .tag {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .remove-tag {
+            margin-left: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Tag input styling */
+        .tag-input {
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .color-picker {
+            margin-left: 10px;
+            padding: 5px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -162,7 +207,6 @@
     <!-- Video background -->
     <video id="bg-video" autoplay muted loop>
         <source src="Images/Gradient.mp4" type="video/mp4">
-        <!-- Add other video formats here if necessary -->
         Your browser does not support the video tag.
     </video>
 
@@ -206,7 +250,14 @@
         <input type="text" id="name" placeholder="Your Name" required>
         <input type="email" id="email" placeholder="Your Email" required>
         <textarea id="message" rows="4" placeholder="Your Inquiry" required></textarea>
-        <button onclick="submitInquiry()">Submit Inquiry</button>
+
+        <!-- Tags input section -->
+        <div class="tags-container" id="tagsContainer"></div>
+        <input type="text" id="tagInput" class="tag-input" placeholder="Add a tag">
+        <input type="color" id="colorPicker" class="color-picker" value="#000000">
+
+        <button onclick="addTag()">Add Tag</button>
+        <button style="margin-top: 10px;" onclick="submitInquiry()">Submit Inquiry</button>
     </div>
 
     <!-- Inquiries List -->
@@ -220,19 +271,58 @@
             var name = document.getElementById("name").value;
             var email = document.getElementById("email").value;
             var message = document.getElementById("message").value;
+            var tags = Array.from(document.querySelectorAll('.tag')).map(tag => {
+                return `<span style="background-color: ${tag.style.backgroundColor}; padding: 5px; border-radius: 5px; margin: 2px; color: white;">${tag.textContent.trim()}</span>`;
+            });
 
             if (name && email && message) {
                 var inquiryList = document.getElementById("inquiryList");
                 var listItem = document.createElement("li");
                 listItem.className = "inquiry-item";
-                listItem.textContent = `${name} (${email}): ${message}`;
+
+                listItem.innerHTML = `
+                    <img src="Images/default-user.png" alt="User Picture"> <!-- Default user picture -->
+                    <div class="inquiry-details">
+                        <strong>${name}</strong> <span>(${email})</span>${tags.join('')}
+                        <p>${message}</p>
+                    </div>
+                `;
                 inquiryList.appendChild(listItem);
 
+                // Clear form fields
                 document.getElementById("name").value = '';
                 document.getElementById("email").value = '';
                 document.getElementById("message").value = '';
+                document.getElementById("tagsContainer").innerHTML = ''; // Clear tags
             } else {
                 alert("Please fill in all fields.");
+            }
+        }
+
+        function addTag() {
+            var tagInput = document.getElementById("tagInput");
+            var colorPicker = document.getElementById("colorPicker");
+            var tagValue = tagInput.value.trim();
+
+            if (tagValue) {
+                var tagsContainer = document.getElementById("tagsContainer");
+                var tagElement = document.createElement("div");
+                tagElement.className = "tag";
+                tagElement.style.backgroundColor = colorPicker.value;
+                tagElement.textContent = tagValue;
+
+                var removeBtn = document.createElement("span");
+                removeBtn.className = "remove-tag";
+                removeBtn.textContent = "×"; // "x" for removing tag
+                removeBtn.onclick = function () {
+                    tagsContainer.removeChild(tagElement);
+                };
+
+                tagElement.appendChild(removeBtn);
+                tagsContainer.appendChild(tagElement);
+
+                // Clear the tag input
+                tagInput.value = '';
             }
         }
     </script>

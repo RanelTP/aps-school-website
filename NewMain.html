@@ -8,8 +8,7 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            
+            font-family: 'Montserrat', sans-serif;  
         }
 
         /* Video background styles */
@@ -49,7 +48,6 @@
             position: relative;
             z-index: 10; /* Ensure navbar appears above other elements */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
         }
 
         .navbar a {
@@ -88,6 +86,16 @@
             border-radius: 10px;
             display: block;
             margin: 20px auto;
+            animation: outlinePulse 2s infinite; /* Added outline pulse animation */
+        }
+
+        @keyframes outlinePulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
         }
 
         h2 {

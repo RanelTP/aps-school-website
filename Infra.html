@@ -43,6 +43,27 @@
             width: 80%;
         }
 
+        /* Pulse animation */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            }
+        }
+
+        .mySlides img {
+            border: 10px solid white;
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+            animation: pulse 2s infinite; /* Add pulse animation */
+        }
+
         /* Header styles */
         .navbar {
             display: flex;
@@ -52,7 +73,6 @@
             z-index: 1; /* Ensure navbar appears above video */
             position: relative; /* Relative positioning for z-index */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
         }
 
         .navbar a {
@@ -79,13 +99,6 @@
         .mySlides {
             display: none;
             text-align: center;
-        }
-
-        .mySlides img {
-            border: 10px solid white;
-            border-radius: 10px;
-            max-width: 100%;
-            height: auto;
         }
 
         .box {

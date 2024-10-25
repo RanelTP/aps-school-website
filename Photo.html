@@ -46,7 +46,6 @@
             background-color: transparent;
             padding: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
         }
 
         .navigation a {
@@ -76,13 +75,27 @@
             object-fit: cover;
             border-radius: 10px;
             border: 5px solid white;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, outline 0.3s;
             cursor: pointer;
         }
 
         .gallery img:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            outline: 5px solid rgba(253, 92, 99, 0.7); /* Outline color */
+            animation: pulse 1.5s infinite; /* Pulse animation */
+        }
+
+        @keyframes pulse {
+            0% {
+                outline-width: 5px;
+            }
+            50% {
+                outline-width: 10px; /* Change the outline width */
+            }
+            100% {
+                outline-width: 5px;
+            }
         }
 
         /* Modal styles */
@@ -205,8 +218,8 @@
         <img src="Images/g44.jpg" alt="Image 44" onclick="openModal(this.src)">
         <img src="Images/g45.jpg" alt="Image 45" onclick="openModal(this.src)">
         <img src="Images/g46.jpg" alt="Image 46" onclick="openModal(this.src)">
-
-        <!-- Images 47-61 (JPEG) -->
+        
+        <!-- Images 47-61 (jpeg) -->
         <img src="Images/g47.jpeg" alt="Image 47" onclick="openModal(this.src)">
         <img src="Images/g48.jpeg" alt="Image 48" onclick="openModal(this.src)">
         <img src="Images/g49.jpeg" alt="Image 49" onclick="openModal(this.src)">
@@ -224,57 +237,36 @@
         <img src="Images/g61.jpeg" alt="Image 61" onclick="openModal(this.src)">
     </div>
 
+    <!-- Modal -->
     <div id="myModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <img id="modal-image" src="">
+            <img id="modalImage" src="" alt="Modal Image">
         </div>
     </div>
 
     <footer>
-        &copy; 2023 Army Public School Cannanore - Photo Gallery
+        &copy; 2024 Army Public School Cannanore. All Rights Reserved.
     </footer>
 
     <script>
-        let zoomLevel = 1;
-
         function openModal(src) {
-            const modal = document.getElementById('myModal');
-            const modalImg = document.getElementById('modal-image');
-            modal.style.display = "flex";
-            modalImg.src = src;
-            zoomLevel = 1;
-            modalImg.style.transform = "scale(1)";
-            modalImg.style.cursor = "zoom-in";
+            document.getElementById("modalImage").src = src;
+            document.getElementById("myModal").style.display = "flex";
         }
 
         function closeModal() {
-            document.getElementById('myModal').style.display = "none";
+            document.getElementById("myModal").style.display = "none";
         }
 
-        const modalImg = document.getElementById('modal-image');
-
-        modalImg.addEventListener('click', function () {
-            if (zoomLevel === 1) {
-                zoomLevel = 2;
-                this.style.transform = "scale(2)";
-                this.style.cursor = "zoom-out";
-            } else {
-                zoomLevel = 1;
-                this.style.transform = "scale(1)";
-                this.style.cursor = "zoom-in";
+        // Close modal on clicking outside of the image
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                closeModal();
             }
-        });
-
-        modalImg.addEventListener('wheel', function (event) {
-            event.preventDefault();
-            if (event.deltaY < 0) {
-                zoomLevel = Math.min(zoomLevel + 0.1, 3);
-            } else {
-                zoomLevel = Math.max(zoomLevel - 0.1, 1);
-            }
-            this.style.transform = `scale(${zoomLevel})`;
-        });
+        };
     </script>
+
 </body>
 </html>
