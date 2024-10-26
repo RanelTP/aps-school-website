@@ -21,7 +21,7 @@
             background: linear-gradient(to bottom, #d66d75, #e29587);
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
@@ -34,7 +34,9 @@
         }
 
         .container {
-            background: linear-gradient(to bottom, #EDF1F4, #C3CBDC);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: solid 1px black;
             padding: 20px;
             border-radius: 10px;
@@ -78,7 +80,7 @@
         .inquiry-form {
             margin: 20px 0;
             padding: 20px;
-            background-color: #fff;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             max-width: 500px;
@@ -99,6 +101,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.7);
         }
 
         .inquiry-form button {
@@ -147,7 +150,7 @@
         .inquiries-list {
             margin-top: 20px;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 1;

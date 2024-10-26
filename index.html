@@ -99,13 +99,15 @@
         /* Navigation table styling */
         table {
             font-size: 26px;
-            background-color: #f2f2f2;
-            border-collapse: collapse;
-            padding: 10px;
-            margin: 20px auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(to bottom, #EDF1F4, #C3CBDC);
+    background: rgba(255, 255, 255, 0.2); /* Adjust opacity */
+    border-collapse: collapse;
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    transition: all 0.3s ease;
         }
 
         td {
@@ -116,7 +118,7 @@
 
         a {
             text-decoration: none;
-            color: #333;
+            color: #ffffff;
             font-weight: 600;
             display: block;
             transition: all 0.3s ease;
@@ -152,22 +154,31 @@
             border-collapse: collapse;
             font-size: 18px;
             background-color: transparent; /* Remove the background color */
+            border-radius: 15px; /* Make the table corners round */
+    overflow: hidden; /* Ensure the border-radius is applied correctly */
         }
 
         .calendar th {
             background-color: #e29587; /* Retain background color for headers */
             color: white; /* Header text color */
+            
         }
 
         .calendar td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
-            color: black; /* Set text color to black for calendar cells */
+            color: rgb(255, 255, 255); /* Set text color to black for calendar cells */
+            border-radius: 0;
+            border: none;
         }
+        /* Optional: Add hover effect for better visibility */
+.calendar td:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+}
 
         .highlight {
-            background-color: #ffeb3b; /* Highlight color for the current day */
+            background-color: #f0b674; /* Highlight color for the current day */
         }
     </style>
 </head>
@@ -235,7 +246,7 @@
     </center>
 
     <center>
-        <table border="1">
+        <table border="0">
             <tr>
                 <td><a href="NewMain.html">About</a></td>
                 <td><a href="Infra.html">Infrastructure</a></td>
