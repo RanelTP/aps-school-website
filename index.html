@@ -156,6 +156,7 @@
             background-color: transparent; /* Remove the background color */
             border-radius: 15px; /* Make the table corners round */
     overflow: hidden; /* Ensure the border-radius is applied correctly */
+    margin-left: 100px;
         }
 
         .calendar th {
@@ -166,7 +167,7 @@
 
         .calendar td {
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 20px;
             text-align: center;
             color: rgb(255, 255, 255); /* Set text color to black for calendar cells */
             border-radius: 0;
@@ -180,6 +181,57 @@
         .highlight {
             background-color: #f0b674; /* Highlight color for the current day */
         }
+        .review-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 350px; /* Space between calendar and review box */
+    margin-top: -420px;
+    font-size: 30px; /* Big text */
+    color: white; /* Text color */
+}
+.reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Space between review box and reviews */
+    max-width: 600px; /* Limit width for better readability */
+    margin-left: 630px;
+}
+
+.review-item {
+    background-color: rgba(255, 255, 255, 0.2); /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    margin: 5px 0; /* Space between reviews */
+    width: 100%; /* Full width of parent */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow */
+}
+.review-item:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly darker background on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}
+
+
+.review-item p {
+    margin: 0; /* Remove default margin */
+    font-weight: 600; /* Bold text for reviews */
+}
+
+.review-item span {
+    display: block; /* New line for author */
+    font-size: 14px; /* Smaller font for author */
+    color: rgba(255, 255, 255, 0.7); /* Light color for author */
+}
+
+
+.stars {
+    font-size: 150px; /* Bigger stars */
+    color: rgba(255, 215, 0, 1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2); /* Glowing effect */
+}
+
     </style>
 </head>
 
@@ -318,6 +370,41 @@
             </tr>
         </table>
     </div>
+    <div class="review-box">
+        <div class="stars">
+            ★★★★☆ 
+        </div>
+        <div class="review-count">
+            4.3 out of 5 (96 reviews)
+        </div>
+    </div>
+    <div class="reviews">
+        <div class="review-item">
+            <p>"Nice place for kids with well maintained surroundings"</p>
+            <span>- Peddapeeraiah Thondam</span>
+        </div>
+        <div class="review-item">
+            <p>"Very nice school and good teachers."</p>
+            <span>- Roshni Dwebedi</span>
+        </div>
+        <div class="review-item">
+            <p>"Best place to study with pure oxygen from many trees"</p>
+            <span>- Rajiv VK</span>
+        </div>
+        <div class="review-item">
+            <p>"My son is a student of APS. I am happy for it!"</p>
+            <span>- Lalasaheb Pawar</span>
+        </div>
+        <div class="review-item">
+            <p>"well disciplined and awesome school 🥺❤️! Proud to be an ASPian💯"</p>
+            <span>- Vrinda Dhanesh</span>
+        </div>
+        <div class="review-item">
+            <p>"Good school proud to be an apsian 😇"</p>
+            <span>- Zaara Fathima</span>
+        </div>
+    </div>
+    
 
     <script>
         let slideIndex = 0; // Initialize slide index
