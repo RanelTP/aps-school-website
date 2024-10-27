@@ -203,6 +203,21 @@
             padding: 5px;
             border-radius: 5px;
         }
+         /* Style for delete button */
+    .delete-btn {
+        margin-left: 10px;
+        color: white;
+        background: red;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .delete-btn:hover {
+        background-color: darkred;
+    }
     </style>
 </head>
 <body>
@@ -271,64 +286,108 @@
     </div>
 
     <script>
-        function submitInquiry() {
-            var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var message = document.getElementById("message").value;
-            var tags = Array.from(document.querySelectorAll('.tag')).map(tag => {
-                return `<span style="background-color: ${tag.style.backgroundColor}; padding: 5px; border-radius: 5px; margin: 2px; color: white;">${tag.textContent.trim()}</span>`;
-            });
+       // Load inquiries from local storage when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        loadInquiries();
+    });
 
-            if (name && email && message) {
-                var inquiryList = document.getElementById("inquiryList");
-                var listItem = document.createElement("li");
-                listItem.className = "inquiry-item";
+    // Function to load and display inquiries from local storage
+    function loadInquiries() {
+        var storedInquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
+        var inquiryList = document.getElementById("inquiryList");
+        inquiryList.innerHTML = ""; // Clear current list
 
-                listItem.innerHTML = `
-                    <img src="Images/default-user.png" alt="User Picture"> <!-- Default user picture -->
-                    <div class="inquiry-details">
-                        <strong>${name}</strong> <span>(${email})</span>${tags.join('')}
-                        <p>${message}</p>
-                    </div>
-                `;
-                inquiryList.appendChild(listItem);
+        storedInquiries.forEach(function (inquiry, index) {
+            var listItem = document.createElement("li");
+            listItem.className = "inquiry-item";
+            listItem.innerHTML = `
+                <img src="Images/default-user.png" alt="User Picture">
+                <div class="inquiry-details">
+                    <strong>${inquiry.name}</strong> <span>(${inquiry.email})</span>${inquiry.tags}
+                    <p>${inquiry.message}</p>
+                </div>
+                <button onclick="deleteInquiry(${index})" class="delete-btn">×</button>
+            `;
+            inquiryList.appendChild(listItem);
+        });
+    }
 
-                // Clear form fields
-                document.getElementById("name").value = '';
-                document.getElementById("email").value = '';
-                document.getElementById("message").value = '';
-                document.getElementById("tagsContainer").innerHTML = ''; // Clear tags
-            } else {
-                alert("Please fill in all fields.");
-            }
+    // Function to save inquiries to local storage
+    function saveInquiry(inquiry) {
+        var storedInquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
+        storedInquiries.push(inquiry);
+        localStorage.setItem("inquiries", JSON.stringify(storedInquiries));
+    }
+
+    // Function to delete an inquiry
+    function deleteInquiry(index) {
+        var storedInquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
+        storedInquiries.splice(index, 1); // Remove the inquiry at the specified index
+        localStorage.setItem("inquiries", JSON.stringify(storedInquiries));
+        loadInquiries(); // Reload the list to reflect changes
+    }
+
+    // Modify the submitInquiry function to save each inquiry to local storage
+    function submitInquiry() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var message = document.getElementById("message").value;
+        var tags = Array.from(document.querySelectorAll('.tag')).map(tag => {
+            return `<span style="background-color: ${tag.style.backgroundColor}; padding: 5px; border-radius: 5px; margin: 2px; color: white;">${tag.textContent.trim()}</span>`;
+        }).join('');
+
+        if (name && email && message) {
+            // Create a new inquiry object
+            var inquiry = {
+                name: name,
+                email: email,
+                message: message,
+                tags: tags
+            };
+
+            // Save to local storage
+            saveInquiry(inquiry);
+
+            // Add to the displayed inquiry list
+            loadInquiries();
+
+            // Clear form fields
+            document.getElementById("name").value = '';
+            document.getElementById("email").value = '';
+            document.getElementById("message").value = '';
+            document.getElementById("tagsContainer").innerHTML = '';
+        } else {
+            alert("Please fill in all fields.");
         }
+    }
 
-        function addTag() {
-            var tagInput = document.getElementById("tagInput");
-            var colorPicker = document.getElementById("colorPicker");
-            var tagValue = tagInput.value.trim();
+    // Add tag function remains the same
+    function addTag() {
+        var tagInput = document.getElementById("tagInput");
+        var colorPicker = document.getElementById("colorPicker");
+        var tagValue = tagInput.value.trim();
 
-            if (tagValue) {
-                var tagsContainer = document.getElementById("tagsContainer");
-                var tagElement = document.createElement("div");
-                tagElement.className = "tag";
-                tagElement.style.backgroundColor = colorPicker.value;
-                tagElement.textContent = tagValue;
+        if (tagValue) {
+            var tagsContainer = document.getElementById("tagsContainer");
+            var tagElement = document.createElement("div");
+            tagElement.className = "tag";
+            tagElement.style.backgroundColor = colorPicker.value;
+            tagElement.textContent = tagValue;
 
-                var removeBtn = document.createElement("span");
-                removeBtn.className = "remove-tag";
-                removeBtn.textContent = "×"; // "x" for removing tag
-                removeBtn.onclick = function () {
-                    tagsContainer.removeChild(tagElement);
-                };
+            var removeBtn = document.createElement("span");
+            removeBtn.className = "remove-tag";
+            removeBtn.textContent = "×";
+            removeBtn.onclick = function () {
+                tagsContainer.removeChild(tagElement);
+            };
 
-                tagElement.appendChild(removeBtn);
-                tagsContainer.appendChild(tagElement);
+            tagElement.appendChild(removeBtn);
+            tagsContainer.appendChild(tagElement);
 
-                // Clear the tag input
-                tagInput.value = '';
-            }
+            // Clear the tag input
+            tagInput.value = '';
         }
+    }
     </script>
 
 </body>
