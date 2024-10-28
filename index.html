@@ -234,8 +234,19 @@
 .stars {
     font-size: 150px; /* Bigger stars */
     color: rgba(255, 215, 0, 1);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2); /* Glowing effect */
+    animation: starGlow 1.5s infinite; /* Glowing effect */
 }
+@keyframes starGlow {
+        0% {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        50% {
+            text-shadow: 0 0 20px rgb(255, 255, 255, 0.3), 0 0 40px rgba(255, 215, 0, 0.7);
+        }
+        100% {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.2), 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+    }
 
     </style>
 </head>
