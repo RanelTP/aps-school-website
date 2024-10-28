@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Leave Applications</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* Video background styling */
@@ -136,6 +136,13 @@
             align-items: flex-start; /* Align items to the start */
         }
 
+        .inquiry-item img {
+            width: 50px; /* Set width for the image */
+            height: 50px; /* Set height for the image */
+            border-radius: 50%; /* Make it circular */
+            margin-right: 10px; /* Space between image and text */
+        }
+
         .delete-btn {
             margin-left: 10px;
             color: white;
@@ -216,6 +223,7 @@
                 const inquiryItem = document.createElement('div');
                 inquiryItem.className = 'inquiry-item';
                 inquiryItem.innerHTML = `
+                    <img src="Images/default-user.png" alt="User Picture"> <!-- Default user picture -->
                     <div class="inquiry-details">
                         <strong>Name:</strong> <span class="highlight">${inquiry.name}</span><br>
                         <strong>Roll No:</strong> <span class="highlight">${inquiry.rollNo}</span><br>
@@ -224,15 +232,14 @@
                         <strong>Period of Leave:</strong> <span class="highlight">${inquiry.leavePeriod}</span><br>
                         <strong>Reason:</strong> <span class="highlight">${inquiry.reason}</span>
                     </div>
-                    <button class="delete-btn" onclick="deleteInquiry('${inquiry.name}')">Delete</button>
+                    <button class="delete-btn" onclick="deleteInquiry('${inquiry.rollNo}')">Delete</button>
                 `;
                 inquiryList.appendChild(inquiryItem);
             });
         }
 
         function submitInquiry(event) {
-            event.preventDefault(); // Prevent default form submission
-
+            event.preventDefault();
             const name = document.getElementById('name').value;
             const rollNo = document.getElementById('rollNo').value;
             const className = document.getElementById('class').value;
@@ -243,17 +250,19 @@
             const inquiries = JSON.parse(localStorage.getItem('leaveApplications')) || [];
             inquiries.push({ name, rollNo, className, applicationDate, leavePeriod, reason });
             localStorage.setItem('leaveApplications', JSON.stringify(inquiries));
+            loadInquiries();
 
-            document.getElementById('leaveForm').reset(); // Reset the form
-            loadInquiries(); // Reload the inquiries list
+            // Clear form fields after submission
+            document.getElementById('leaveForm').reset();
         }
 
-        function deleteInquiry(name) {
-            let inquiries = JSON.parse(localStorage.getItem('leaveApplications')) || [];
-            inquiries = inquiries.filter(inquiry => inquiry.name !== name);
-            localStorage.setItem('leaveApplications', JSON.stringify(inquiries));
-            loadInquiries(); // Reload the inquiries list
+        function deleteInquiry(rollNo) {
+            const inquiries = JSON.parse(localStorage.getItem('leaveApplications')) || [];
+            const updatedInquiries = inquiries.filter(inquiry => inquiry.rollNo !== rollNo);
+            localStorage.setItem('leaveApplications', JSON.stringify(updatedInquiries));
+            loadInquiries();
         }
     </script>
+
 </body>
 </html>
