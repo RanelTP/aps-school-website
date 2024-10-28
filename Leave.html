@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Video background styling */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1; /* Place video behind other content */
+        }
+
+        body {
+            background: linear-gradient(to bottom, #d66d75, #e29587);
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: rgb(255, 255, 255);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'montserrat', sans-serif;
+            color: white;
+            margin: 20px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: solid 1px black;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1; /* Ensure it overlays the video */
+            position: relative;
+        }
+
+        .inquiry-form {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .inquiry-form input, .inquiry-form textarea {
+            width: 90%;
+            max-width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.7);
+            margin-left: 10px;
+        }
+
+        .inquiry-form button {
+            padding: 10px 15px;
+            background-color: #fd5c63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 90%;
+            margin-left: 23px;
+        }
+
+        .inquiry-form button:hover {
+            background-color: #f05a62; /* Darker shade on hover */
+            transform: scale(1.05); /* Slightly increase size on hover */
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: transparent;
+            padding: 10px 0;
+            font-size: 18px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 8px 15px;
+            margin: 0 10px;
+            transition: color 0.3s;
+            background-color: transparent;
+        }
+
+        .navbar a:hover {
+            color: #fd5c63;
+            background-color: transparent;
+        }
+
+        .inquiries-list {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            position: relative;
+        }
+
+        .inquiry-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            display: flex; /* Flex layout for inquiry items */
+            align-items: flex-start; /* Align items to the start */
+        }
+
+        .delete-btn {
+            margin-left: 10px;
+            color: white;
+            background: red;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+
+        /* Highlighting for inquiry values */
+        .highlight {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video background -->
+    <video id="bg-video" autoplay muted loop>
+        <source src="Images/Gradient.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="NewMain.html">About</a>
+        <a href="Infra.html">Infrastructure</a>
+        <a href="Clubs.html">School Clubs</a>
+        <a href="Admission.html">Admission</a>
+        <a href="Stream.html">Stream</a>
+        <a href="Leave.html">Leave</a>
+        <a href="Activities.html">Activities</a>
+        <a href="Photo.html">Photo Gallery</a>
+        <a href="Contact.html">Contact Us</a>
+    </div>
+
+    <h1>Leave Application</h1>
+
+    <!-- Inquiry Form -->
+    <div class="inquiry-form">
+        <h2>Apply For Leave</h2>
+        <form id="leaveForm" onsubmit="submitInquiry(event)"> 
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="rollNo" placeholder="Roll No" required>
+            <input type="text" id="class" placeholder="Class" required>
+            <input type="text" id="applicationDate" placeholder="Date of Application" required>
+            <input type="text" id="leavePeriod" placeholder="Period of Leave" required>
+            <textarea id="reason" rows="4" placeholder="Reason for Leave" required></textarea>
+            <button style="margin-top: 10px;" type="submit">Submit Inquiry</button> 
+        </form>
+    </div>
+
+    <!-- Inquiries List -->
+    <div class="inquiries-list">
+        <h2>Leave Applications</h2>
+        <div id="inquiryList"></div>
+    </div>
+
+    <script>
+        const inquiryList = document.getElementById('inquiryList');
+
+        // Load inquiries from local storage on page load
+        window.onload = function() {
+            loadInquiries();
+        }
+
+        function loadInquiries() {
+            inquiryList.innerHTML = ''; // Clear current inquiries
+            const inquiries = JSON.parse(localStorage.getItem('leaveApplications')) || [];
+            inquiries.forEach(inquiry => {
+                const inquiryItem = document.createElement('div');
+                inquiryItem.className = 'inquiry-item';
+                inquiryItem.innerHTML = `
+                    <div class="inquiry-details">
+                        <strong>Name:</strong> <span class="highlight">${inquiry.name}</span><br>
+                        <strong>Roll No:</strong> <span class="highlight">${inquiry.rollNo}</span><br>
+                        <strong>Class:</strong> <span class="highlight">${inquiry.className}</span><br>
+                        <strong>Date of Application:</strong> <span class="highlight">${inquiry.applicationDate}</span><br>
+                        <strong>Period of Leave:</strong> <span class="highlight">${inquiry.leavePeriod}</span><br>
+                        <strong>Reason:</strong> <span class="highlight">${inquiry.reason}</span>
+                    </div>
+                    <button class="delete-btn" onclick="deleteInquiry('${inquiry.name}')">Delete</button>
+                `;
+                inquiryList.appendChild(inquiryItem);
+            });
+        }
+
+        function submitInquiry(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const rollNo = document.getElementById('rollNo').value;
+            const className = document.getElementById('class').value;
+            const applicationDate = document.getElementById('applicationDate').value;
+            const leavePeriod = document.getElementById('leavePeriod').value;
+            const reason = document.getElementById('reason').value;
+
+            const inquiries = JSON.parse(localStorage.getItem('leaveApplications')) || [];
+            inquiries.push({ name, rollNo, className, applicationDate, leavePeriod, reason });
+            localStorage.setItem('leaveApplications', JSON.stringify(inquiries));
+
+            document.getElementById('leaveForm').reset(); // Reset the form
+            loadInquiries(); // Reload the inquiries list
+        }
+
+        function deleteInquiry(name) {
+            let inquiries = JSON.parse(localStorage.getItem('leaveApplications')) || [];
+            inquiries = inquiries.filter(inquiry => inquiry.name !== name);
+            localStorage.setItem('leaveApplications', JSON.stringify(inquiries));
+            loadInquiries(); // Reload the inquiries list
+        }
+    </script>
+</body>
+</html>
