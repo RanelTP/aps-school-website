@@ -100,7 +100,13 @@
         .mySlides {
             display: none;
             text-align: center;
+            opacity: 0; /* Start with opacity 0 for fading */
+            transition: opacity 1s ease; /* Transition effect for opacity */
         }
+        .mySlides.show {
+    display: block; /* Show the current slide */
+    opacity: 1; /* Fade in to full opacity */
+}
 
         .box {
             border: 1px solid #ddd;
@@ -225,13 +231,15 @@
             // Loop back if index is beyond bounds
             if (n > slides.length) { slideIndex = 1; }
             if (n < 1) { slideIndex = slides.length; }
-            // Hide all slides
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            // Show the current slide
-            slides[slideIndex - 1].style.display = "block";
-        }
+           // Hide all slides and remove the "show" class
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("show"); // Remove the show class for fading out
+        slides[i].style.display = "none"; // Hide the slides
+    }
+             // Show the current slide and add the "show" class
+    slides[slideIndex - 1].style.display = "block"; // Show the current slide
+    setTimeout(() => { slides[slideIndex - 1].classList.add("show"); }, 50); // Add show class after a short delay
+}
 
         function plusSlides(n) {
             slideIndex += n; // Change slide index
