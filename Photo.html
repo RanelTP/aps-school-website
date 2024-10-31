@@ -145,6 +145,31 @@
             color: white;
             font-style: italic;
         }
+        /* Filter button styles */
+        .filter-buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .filter-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .filter-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .filter-button.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
     </style>
 </head>
@@ -172,71 +197,86 @@
 
     <h1>Gallery</h1>
 
+    <div class="filter-buttons">
+        <button class="filter-button active" onclick="filterGallery('all')">All</button>
+        <button class="filter-button" onclick="filterGallery('CCA')">CCA</button>
+        <button class="filter-button" onclick="filterGallery('Sports')">Sports Day</button>
+        <button class="filter-button" onclick="filterGallery('Independence')">Independence Day</button>
+        <button class="filter-button" onclick="filterGallery('Expo')">Expo</button>
+        <button class="filter-button" onclick="filterGallery('Yoga')">Yoga Day</button>
+        <button class="filter-button" onclick="filterGallery('Sahodaya')">Sahodaya Talent Fest</button>
+        <button class="filter-button" onclick="filterGallery('Onam')">Onam</button>
+        <button class="filter-button" onclick="filterGallery('Teacher')">Teacher's Day</button>
+        <button class="filter-button" onclick="filterGallery('Fest')">APS Fest</button>
+        <button class="filter-button" onclick="filterGallery('Republic')">Republic Day</button>
+        <button class="filter-button" onclick="filterGallery('Annual')">Annual Day</button>
+    </div>
+
     <div class="gallery">
         <!-- Images 1-46 (JPG) -->
-        <img src="Images/g1.jpg" alt="Image 1" onclick="openModal(this.src)">
-        <img src="Images/g2.jpg" alt="Image 2" onclick="openModal(this.src)">
-        <img src="Images/g3.jpg" alt="Image 3" onclick="openModal(this.src)">
-        <img src="Images/g4.jpg" alt="Image 4" onclick="openModal(this.src)">
-        <img src="Images/g5.jpg" alt="Image 5" onclick="openModal(this.src)">
-        <img src="Images/g6.jpg" alt="Image 6" onclick="openModal(this.src)">
-        <img src="Images/g7.jpg" alt="Image 7" onclick="openModal(this.src)">
-        <img src="Images/g8.jpg" alt="Image 8" onclick="openModal(this.src)">
-        <img src="Images/g9.jpg" alt="Image 9" onclick="openModal(this.src)">
-        <img src="Images/g10.jpg" alt="Image 10" onclick="openModal(this.src)">
-        <img src="Images/g11.jpg" alt="Image 11" onclick="openModal(this.src)">
-        <img src="Images/g12.jpg" alt="Image 12" onclick="openModal(this.src)">
-        <img src="Images/g13.jpg" alt="Image 13" onclick="openModal(this.src)">
-        <img src="Images/g14.jpg" alt="Image 14" onclick="openModal(this.src)">
-        <img src="Images/g15.jpg" alt="Image 15" onclick="openModal(this.src)">
-        <img src="Images/g16.jpg" alt="Image 16" onclick="openModal(this.src)">
-        <img src="Images/g17.jpg" alt="Image 17" onclick="openModal(this.src)">
-        <img src="Images/g18.jpg" alt="Image 18" onclick="openModal(this.src)">
-        <img src="Images/g19.jpg" alt="Image 19" onclick="openModal(this.src)">
-        <img src="Images/g20.jpg" alt="Image 20" onclick="openModal(this.src)">
-        <img src="Images/g21.jpg" alt="Image 21" onclick="openModal(this.src)">
-        <img src="Images/g22.jpg" alt="Image 22" onclick="openModal(this.src)">
-        <img src="Images/g23.jpg" alt="Image 23" onclick="openModal(this.src)">
-        <img src="Images/g24.jpg" alt="Image 24" onclick="openModal(this.src)">
-        <img src="Images/g25.jpg" alt="Image 25" onclick="openModal(this.src)">
-        <img src="Images/g26.jpg" alt="Image 26" onclick="openModal(this.src)">
-        <img src="Images/g27.jpg" alt="Image 27" onclick="openModal(this.src)">
-        <img src="Images/g28.jpg" alt="Image 28" onclick="openModal(this.src)">
-        <img src="Images/g29.jpg" alt="Image 29" onclick="openModal(this.src)">
-        <img src="Images/g30.jpg" alt="Image 30" onclick="openModal(this.src)">
-        <img src="Images/g31.jpg" alt="Image 31" onclick="openModal(this.src)">
-        <img src="Images/g32.jpg" alt="Image 32" onclick="openModal(this.src)">
-        <img src="Images/g33.jpg" alt="Image 33" onclick="openModal(this.src)">
-        <img src="Images/g34.jpg" alt="Image 34" onclick="openModal(this.src)">
-        <img src="Images/g35.jpg" alt="Image 35" onclick="openModal(this.src)">
-        <img src="Images/g36.jpg" alt="Image 36" onclick="openModal(this.src)">
-        <img src="Images/g37.jpg" alt="Image 37" onclick="openModal(this.src)">
-        <img src="Images/g38.jpg" alt="Image 38" onclick="openModal(this.src)">
-        <img src="Images/g39.jpg" alt="Image 39" onclick="openModal(this.src)">
-        <img src="Images/g40.jpg" alt="Image 40" onclick="openModal(this.src)">
-        <img src="Images/g41.jpg" alt="Image 41" onclick="openModal(this.src)">
-        <img src="Images/g42.jpg" alt="Image 42" onclick="openModal(this.src)">
-        <img src="Images/g43.jpg" alt="Image 43" onclick="openModal(this.src)">
-        <img src="Images/g44.jpg" alt="Image 44" onclick="openModal(this.src)">
-        <img src="Images/g45.jpg" alt="Image 45" onclick="openModal(this.src)">
-        <img src="Images/g46.jpg" alt="Image 46" onclick="openModal(this.src)">
+        <img src="Images/g1.jpg" alt="Image 1" data-category="CCA" onclick="openModal(this.src)">
+        <img src="Images/g2.jpg" alt="Image 2" data-category="CCA" onclick="openModal(this.src)">
+        <img src="Images/g3.jpg" alt="Image 3" data-category="CCA" onclick="openModal(this.src)">
+        <img src="Images/g4.jpg" alt="Image 4" data-category="CCA" onclick="openModal(this.src)">
+        <img src="Images/g5.jpg" alt="Image 5" data-category="CCA" onclick="openModal(this.src)">
+        <img src="Images/g6.jpg" alt="Image 6" data-category="CCA" onclick="openModal(this.src)">
+        <img src="Images/g7.jpg" alt="Image 7" data-category="Sports" onclick="openModal(this.src)">
+        <img src="Images/g8.jpg" alt="Image 8" data-category="Independence" onclick="openModal(this.src)">
+        <img src="Images/g9.jpg" alt="Image 9" data-category="Independence" onclick="openModal(this.src)">
+        <img src="Images/g10.jpg" alt="Image 10" data-category="Independence" onclick="openModal(this.src)">
+        <img src="Images/g11.jpg" alt="Image 11" data-category="Expo" onclick="openModal(this.src)">
+        <img src="Images/g12.jpg" alt="Image 12" data-category="Expo" onclick="openModal(this.src)">
+        <img src="Images/g13.jpg" alt="Image 13" data-category="Yoga" onclick="openModal(this.src)">
+        <img src="Images/g14.jpg" alt="Image 14" data-category="Yoga" onclick="openModal(this.src)">
+        <img src="Images/g15.jpg" alt="Image 15" data-category="Yoga" onclick="openModal(this.src)">
+        <img src="Images/g16.jpg" alt="Image 16" data-category="Yoga" onclick="openModal(this.src)">
+        <img src="Images/g17.jpg" alt="Image 17" data-category="Sahodaya" onclick="openModal(this.src)">
+        <img src="Images/g18.jpg" alt="Image 18" data-category="Onam" onclick="openModal(this.src)">
+        <img src="Images/g19.jpg" alt="Image 19" data-category="Onam" onclick="openModal(this.src)">
+        <img src="Images/g20.jpg" alt="Image 20" data-category="Onam" onclick="openModal(this.src)">
+        <img src="Images/g21.jpg" alt="Image 21" data-category="Onam" onclick="openModal(this.src)">
+        <img src="Images/g22.jpg" alt="Image 22" data-category="Teacher" onclick="openModal(this.src)">
+        <img src="Images/g23.jpg" alt="Image 23" data-category="Teacher" onclick="openModal(this.src)">
+        <img src="Images/g24.jpg" alt="Image 24" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g25.jpg" alt="Image 25" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g26.jpg" alt="Image 26" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g27.jpg" alt="Image 27" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g28.jpg" alt="Image 28" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g29.jpg" alt="Image 29" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g30.jpg" alt="Image 30" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g31.jpg" alt="Image 31" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g32.jpg" alt="Image 32" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g33.jpg" alt="Image 33" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g34.jpg" alt="Image 34" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g35.jpg" alt="Image 35" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g36.jpg" alt="Image 36" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g37.jpg" alt="Image 37" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g38.jpg" alt="Image 38" data-category="Fest" onclick="openModal(this.src)">
+        <img src="Images/g39.jpg" alt="Image 39" data-category="Republic" onclick="openModal(this.src)">
+        <img src="Images/g40.jpg" alt="Image 40" data-category="Republic" onclick="openModal(this.src)">
+        <img src="Images/g41.jpg" alt="Image 41" data-category="Republic" onclick="openModal(this.src)">
+        <img src="Images/g42.jpg" alt="Image 42" data-category="Republic" onclick="openModal(this.src)">
+        <img src="Images/g43.jpg" alt="Image 43" data-category="Republic" onclick="openModal(this.src)">
+        <img src="Images/g44.jpg" alt="Image 44" data-category="Republic" onclick="openModal(this.src)">
+        <img src="Images/g45.jpg" alt="Image 45" data-category="Republic" onclick="openModal(this.src)">
+        <img src="Images/g46.jpg" alt="Image 46" data-category="Republic" onclick="openModal(this.src)">
         
         <!-- Images 47-61 (jpeg) -->
-        <img src="Images/g47.jpeg" alt="Image 47" onclick="openModal(this.src)">
-        <img src="Images/g48.jpeg" alt="Image 48" onclick="openModal(this.src)">
-        <img src="Images/g49.jpeg" alt="Image 49" onclick="openModal(this.src)">
-        <img src="Images/g50.jpeg" alt="Image 50" onclick="openModal(this.src)">
-        <img src="Images/g51.jpeg" alt="Image 51" onclick="openModal(this.src)">
-        <img src="Images/g52.jpeg" alt="Image 52" onclick="openModal(this.src)">
-        <img src="Images/g53.jpeg" alt="Image 53" onclick="openModal(this.src)">
-        <img src="Images/g54.jpeg" alt="Image 54" onclick="openModal(this.src)">
-        <img src="Images/g55.jpeg" alt="Image 55" onclick="openModal(this.src)">
-        <img src="Images/g56.jpeg" alt="Image 56" onclick="openModal(this.src)">
-        <img src="Images/g57.jpeg" alt="Image 57" onclick="openModal(this.src)">
-        <img src="Images/g58.jpeg" alt="Image 58" onclick="openModal(this.src)">
-        <img src="Images/g59.jpeg" alt="Image 59" onclick="openModal(this.src)">
-        <img src="Images/g60.jpeg" alt="Image 60" onclick="openModal(this.src)">
-        <img src="Images/g61.jpeg" alt="Image 61" onclick="openModal(this.src)">
+        <img src="Images/g47.jpeg" alt="Image 47" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g48.jpeg" alt="Image 48" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g49.jpeg" alt="Image 49" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g50.jpeg" alt="Image 50" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g51.jpeg" alt="Image 51" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g52.jpeg" alt="Image 52" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g53.jpeg" alt="Image 53" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g54.jpeg" alt="Image 54" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g55.jpeg" alt="Image 55" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g56.jpeg" alt="Image 56" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g57.jpeg" alt="Image 57" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g58.jpeg" alt="Image 58" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g59.jpeg" alt="Image 59" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g60.jpeg" alt="Image 60" data-category="Annual" onclick="openModal(this.src)">
+        <img src="Images/g61.jpeg" alt="Image 61" data-category="Annual" onclick="openModal(this.src)">
     </div>
 
     <!-- Modal -->
@@ -268,6 +308,29 @@
                 closeModal();
             }
         };
+          // Filter gallery function
+          function filterGallery(category) {
+            const images = document.querySelectorAll('.gallery img');
+            images.forEach(img => {
+                if (category === 'all' || img.dataset.category === category) {
+                    img.style.display = 'block';
+                } else {
+                    img.style.display = 'none';
+                }
+            });
+            setActiveButton(category);
+        }
+
+        // Set active button
+        function setActiveButton(category) {
+            const buttons = document.querySelectorAll('.filter-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+                if (button.textContent.toLowerCase() === category) {
+                    button.classList.add('active');
+                }
+            });
+        }
     </script>
 
 </body>
