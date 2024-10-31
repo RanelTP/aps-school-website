@@ -133,9 +133,12 @@
 
         .inquiry-item {
             border-bottom: 1px solid #ccc;
-            padding: 10px 0;
+            padding: 15px ;
+            margin: 10px 0; /* Adds space between items */
             display: flex; /* Flex layout for inquiry items */
             align-items: flex-start; /* Align items to the start */
+            cursor: pointer; /* Changes cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition for background color */
         }
 
         .inquiry-item img {
@@ -158,12 +161,17 @@
 
         .delete-btn:hover {
             background-color: darkred;
+            transform: scale(1.1); /* Slightly increase size on hover */
         }
 
         /* Highlighting for inquiry values */
         .highlight {
             font-size: 20px;
         }
+        .inquiry-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
     </style>
 </head>
 <body>
