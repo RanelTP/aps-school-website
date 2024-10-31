@@ -105,6 +105,27 @@
             font-size: 14px;
             font-style: italic;
         }
+         /* Collapsible Content */
+         .collapsible {
+            overflow: hidden; /* Prevents overflow */
+            transition: max-height 0.3s ease, opacity 0.3s ease; /* Transition for max-height and opacity */
+            opacity: 0; /* Hidden by default */
+            max-height: 0; /* Hidden by default */
+            margin-bottom: 15px;
+        }
+
+        .collapsible.show {
+            opacity: 1; /* Show when expanded */
+            max-height: 300px; /* Set to a max height sufficient for content */
+        }
+        /* Arrow Styles */
+        .arrow {
+            transition: transform 0.3s; /* Smooth transition for the arrow */
+        }
+
+        h2:hover .arrow {
+            transform: rotate(180deg); /* Rotate arrow on hover */
+        }
     </style>
 </head>
 <body>
@@ -135,7 +156,8 @@
     <hr>
 
     <section>
-        <h2>Science</h2>
+        <h2 onclick="toggleCollapsible('science')">Science &#9660;</h2>
+        <div id="science" class="collapsible show">
         <ol style="font-weight: bold;">
             <li><div class="box">English, Physics, Chemistry, Maths, Biology</div></li>
             <li><div class="box">English, Physics, Chemistry, Maths, Computer Science</div></li>
@@ -145,7 +167,8 @@
     </section>
 
     <section>
-        <h2>Commerce</h2>
+        <h2 onclick="toggleCollapsible('commerce')">Commerce &#9660;</h2>
+        <div id="commerce" class="collapsible show">
         <ol type="" style="font-weight: bold;">
             <li><div class="box">English , Business Studies, Accountancy, Economics, Maths</div></li>
             <li><div class="box">English, Business Studies, Accountancy, Economics, Informatics Practice</div></li>
@@ -154,7 +177,8 @@
     </section>
 
     <section>
-        <h2>Humanities</h2>
+        <h2 onclick="toggleCollapsible('humanities')">Humanities &#9660;</h2>
+        <div id="humanities" class="collapsible show">
         <ol type="" style="font-weight: bold;">
             <li><div class="box">English, History, Geography, Economics, Psychology</div></li>
             
@@ -164,5 +188,20 @@
     <footer>
         &copy; 2024 Army Public School Cannanore. All rights reserved.
     </footer>
+
+    <script>
+       function toggleCollapsible(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle("show"); // Toggle the show class
+
+            // Get the current max-height value
+            const isExpanded = content.classList.contains("show");
+            if (isExpanded) {
+                content.style.maxHeight = content.scrollHeight + "px"; // Set max-height to the scroll height
+            } else {
+                content.style.maxHeight = "0"; // Collapse
+            }
+        }
+    </script>
 </body>
 </html>

@@ -105,6 +105,27 @@
             font-size: 14px;
             font-style: italic;
         }
+         /* Collapsible Content */
+         .collapsible {
+            overflow: hidden; /* Prevents overflow */
+            transition: max-height 0.3s ease, opacity 0.3s ease; /* Transition for max-height and opacity */
+            opacity: 0; /* Hidden by default */
+            max-height: 0; /* Hidden by default */
+            margin-bottom: 15px;
+        }
+
+        .collapsible.show {
+            opacity: 1; /* Show when expanded */
+            max-height: 300px; /* Set to a max height sufficient for content */
+        }
+        /* Arrow Styles */
+        .arrow {
+            transition: transform 0.3s; /* Smooth transition for the arrow */
+        }
+
+        h2:hover .arrow {
+            transform: rotate(180deg); /* Rotate arrow on hover */
+        }
     </style>
 </head>
 <body>
@@ -135,7 +156,8 @@
     <hr>
 
     <section>
-        <h2>Age Criteria</h2>
+        <h2 onclick="toggleCollapsible('Age')">Age Criteria &#9660;</h2>
+        <div id="Age" class="collapsible show">
         <ol style="font-weight: bold;">
             <li><div class="box">Nursery - 3 Yrs & Above</div></li>
             <li><div class="box">LKG - 4 Yrs & Above</div></li>
@@ -144,7 +166,8 @@
     </section>
 
     <section>
-        <h2>Priority</h2>
+        <h2 onclick="toggleCollapsible('Priority')">Priority &#9660;</h2>
+        <div id="Priority" class="collapsible show">
         <ol style="font-weight: bold;">
             <li><div class="box">Children of Serving Army Personnel, DSC personnel, Army war widows, Assam Rifles, and TA (When Embodied)</div></li>
             <li><div class="box">Children of Ex-Serviceman and Ex-DSC men</div></li>
@@ -156,7 +179,8 @@
     </section>
 
     <section>
-        <h2>Guidelines</h2>
+        <h2 onclick="toggleCollapsible('Guidelines')">Guidelines &#9660;</h2>
+        <div id="Guidelines" class="collapsible show">
         <ol type="A" style="font-weight: bold;">
             <li><div class="box">Fresh Admission to Army Public School will be through an admission test.</div></li>
             <li><div class="box">All necessary documents are to be attached with the admission form.</div></li>
@@ -169,7 +193,8 @@
     </section>
 
     <section>
-        <h2>The admission test subjects are:</h2>
+        <h2 onclick="toggleCollapsible('Admission')">The admission test subjects are: &#9660;</h2>
+        <div id="Admission" class="collapsible show">
         <ol type="A">
             <li><div class="box">Classes I to IV - English, Hindi, and Mathematics.</div></li>
             <li><div class="box">Classes VI to X - English, Hindi, Maths, Science.</div></li>
@@ -180,5 +205,20 @@
     <footer>
         &copy; 2024 Army Public School Cannanore. All rights reserved.
     </footer>
+
+    <script>
+        function toggleCollapsible(id) {
+             const content = document.getElementById(id);
+             content.classList.toggle("show"); // Toggle the show class
+ 
+             // Get the current max-height value
+             const isExpanded = content.classList.contains("show");
+             if (isExpanded) {
+                 content.style.maxHeight = content.scrollHeight + "px"; // Set max-height to the scroll height
+             } else {
+                 content.style.maxHeight = "0"; // Collapse
+             }
+         }
+     </script>
 </body>
 </html>
