@@ -1,6 +1,7 @@
 # aps-school-website
 
 A comprehensive website for Army Public School Cannanore, designed to provide information about the school, its programs, and activities.
+![image](https://github.com/user-attachments/assets/f281e11f-e05f-4b71-abe6-666b37b21952)
 
 ## Table of Contents
 
